@@ -1,12 +1,13 @@
-package vlth.brainbreak.Util;
+package vlth.myproject.Util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import vlth.brainbreak.ColorShape;
-import vlth.brainbreak.FreakingMath;
-import vlth.brainbreak.HigherOrLower;
-import vlth.brainbreak.MixWord;
+import vlth.myproject.ColorShape;
+import vlth.myproject.FreakingMath;
+import vlth.myproject.HigherOrLower;
+import vlth.myproject.MixWord;
 
 /**
  * Created by Administrator on 10/21/2015.

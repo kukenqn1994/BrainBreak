@@ -4,22 +4,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="vlth.brainbreak.HomeActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Brain Games"
-            android:gravity="center"
-            android:textSize="32sp"/>
-    </LinearLayout>
+    tools:context="vlth.myproject.HomeActivity">
+
     <ListView
         android:id="@+id/list_game"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7">
+        android:layout_weight="0.9">
     </ListView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btLogin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#3b5998"
+            android:layout_weight="0.5"
+            android:text="Login Facebook"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/btInvite"
+            android:layout_marginLeft="4dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#3b5998"
+            android:text="Invite Your Friend"
+            android:layout_weight="0.5"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+    </LinearLayout>
 </LinearLayout>

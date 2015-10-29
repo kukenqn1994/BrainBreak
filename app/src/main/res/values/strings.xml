@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyProject</string>
+    <string name="app_name">Brain Breaks</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -23,4 +23,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_color_shape">ColorShape</string>
+<<<<<<< HEAD
+
+    <string name="facebook_app_id">787782571365958</string>
+
+
+    <string name="facebook_app_namespace">brainbreak</string>
+    <string name="invite_friends_market_url">https://play.google.com/store/apps/details?id=com.bangdev.freakingmath</string>
+    <string name="invite_friends_share_message">test invite</string>
+=======
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_number_memory">NumberMemory</string>
+>>>>>>> a0a5b93afa040dc38fef86780f3ad74964b2994a
 </resources>

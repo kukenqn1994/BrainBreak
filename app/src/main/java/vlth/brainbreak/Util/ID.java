@@ -1,4 +1,4 @@
-package vlth.brainbreak.Util;
+package vlth.myproject.Util;
 
 /**
  * Created by Administrator on 10/21/2015.
@@ -13,4 +13,6 @@ public class ID {
     public static String HIGH_SCORE_FREAKING_MATH = "hs_fm";
     public static String NORMAL_SCORE_COLOR_SHAPE = "ns_cs";
     public static String HIGH_SCORE_COLOR_SHAPE = "hs_cs";
+    public static String NORMAL_SCORE_FIND_IMAGE = "ns_fi";
+    public static String HIGH_SCORE_FIND_IMAGE = "hs_fi";
 }

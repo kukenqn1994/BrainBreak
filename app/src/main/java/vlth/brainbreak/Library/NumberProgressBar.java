@@ -1,4 +1,4 @@
-package vlth.brainbreak.Library;
+package vlth.myproject.Library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,8 +11,10 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import static vlth.brainbreak.Library.NumberProgressBar.ProgressTextVisibility.Invisible;
-import static vlth.brainbreak.Library.NumberProgressBar.ProgressTextVisibility.Visible;
+import vlth.myproject.R;
+
+import static vlth.myproject.Library.NumberProgressBar.ProgressTextVisibility.Invisible;
+import static vlth.myproject.Library.NumberProgressBar.ProgressTextVisibility.Visible;
 
 /**
  * Created by daimajia on 14-4-30.
@@ -164,7 +166,7 @@ public class NumberProgressBar extends View {
     }
 
     public NumberProgressBar(Context context, AttributeSet attrs) {
-        this(context, attrs, com.daimajia.numberprogressbar.R.attr.numberProgressBarStyle);
+        this(context, attrs, R.attr.numberProgressBarStyle);
     }
 
     public NumberProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -176,19 +178,19 @@ public class NumberProgressBar extends View {
         default_progress_text_offset = dp2px(3.0f);
 
         //load styled attributes.
-        final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, com.daimajia.numberprogressbar.R.styleable.NumberProgressBar,
+        final TypedArray attributes = context.getTheme().obtainStyledAttributes(attrs, R.styleable.NumberProgressBar,
                 defStyleAttr, 0);
 
-        mReachedBarColor = attributes.getColor(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_reached_color, default_reached_color);
-        mUnreachedBarColor = attributes.getColor(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_unreached_color, default_unreached_color);
-        mTextColor = attributes.getColor(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_text_color, default_text_color);
-        mTextSize = attributes.getDimension(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_text_size, default_text_size);
+        mReachedBarColor = attributes.getColor(R.styleable.NumberProgressBar_progress_reached_color, default_reached_color);
+        mUnreachedBarColor = attributes.getColor(R.styleable.NumberProgressBar_progress_unreached_color, default_unreached_color);
+        mTextColor = attributes.getColor(R.styleable.NumberProgressBar_progress_text_color, default_text_color);
+        mTextSize = attributes.getDimension(R.styleable.NumberProgressBar_progress_text_size, default_text_size);
 
-        mReachedBarHeight = attributes.getDimension(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_reached_bar_height, default_reached_bar_height);
-        mUnreachedBarHeight = attributes.getDimension(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_unreached_bar_height, default_unreached_bar_height);
-        mOffset = attributes.getDimension(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_text_offset, default_progress_text_offset);
+        mReachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_progress_reached_bar_height, default_reached_bar_height);
+        mUnreachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_progress_unreached_bar_height, default_unreached_bar_height);
+        mOffset = attributes.getDimension(R.styleable.NumberProgressBar_progress_text_offset, default_progress_text_offset);
 
-        int textVisible = attributes.getInt(com.daimajia.numberprogressbar.R.styleable.NumberProgressBar_progress_text_visibility, PROGRESS_TEXT_VISIBLE);
+        int textVisible = attributes.getInt(R.styleable.NumberProgressBar_progress_text_visibility, PROGRESS_TEXT_VISIBLE);
         if (textVisible != PROGRESS_TEXT_VISIBLE) {
             mIfDrawText = false;
         }
@@ -306,7 +308,7 @@ public class NumberProgressBar extends View {
             mReachedRectF.right = mDrawTextStart - mOffset;
         }
 
-        float unreachedBarStart = mDrawTextStart + mDrawTextWidth + mOffset;
+        float unreachedBarStart = mDrawTextStart + mDrawTextWidth;
         if (unreachedBarStart >= getWidth() - getPaddingRight()) {
             mDrawUnreachedBar = false;
         } else {
@@ -428,7 +430,7 @@ public class NumberProgressBar extends View {
             setProgress(getProgress() + by);
         }
 
-        if(mListener != null){
+        if (mListener != null) {
             mListener.onProgressChange(getProgress(), getMax());
         }
     }
@@ -499,7 +501,5 @@ public class NumberProgressBar extends View {
         return mIfDrawText;
     }
 
-    public void setOnProgressBarListener(OnProgressBarListener listener){
-        mListener = listener;
-    }
+
 }

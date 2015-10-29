@@ -1,67 +1,79 @@
-package vlth.brainbreak;
+package vlth.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
 
 import java.util.Random;
 
-import vlth.brainbreak.Library.NumberProgressBar;
-import vlth.brainbreak.Util.HighScore;
-import vlth.brainbreak.Util.ID;
-import vlth.brainbreak.Util.MyTimer;
-import vlth.brainbreak.Util.SoundUtil;
+import vlth.myproject.Library.NumberProgressBar;
+import vlth.myproject.Util.HighScore;
+import vlth.myproject.Util.ID;
+import vlth.myproject.Util.MyTimer;
+import vlth.myproject.Util.SoundUtil;
 
 public class HigherOrLower extends AppCompatActivity {
 
-    private Button btH, btL;
-    private TextView num, count, score;
+    private ImageButton btH;
+    private ImageButton btL;
+    private TextView num, score;
     private int firstNum, lastNum, myScore = 0;
     private NumberProgressBar progressBar;
     private MyTimer myTimer;
     private boolean finish = false;
-
+    private FloatingActionButton fab;
     private HighScore highScore;
+    private LinearLayout timer_layout, main_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        highScore=new HighScore(this);
-
+        highScore = new HighScore(this);
         score = (TextView) findViewById(R.id.point);
-        count = (TextView) findViewById(R.id.count);
-        btH = (Button) findViewById(R.id.btHigher);
-        btL = (Button) findViewById(R.id.btLower);
+        btH = (ImageButton) findViewById(R.id.btHigher);
+        btL = (ImageButton) findViewById(R.id.btLower);
         num = (TextView) findViewById(R.id.number);
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
+        main_view=(LinearLayout)findViewById(R.id.layout_main);
 
-        myTimer = new MyTimer(2000);
+        myTimer = new MyTimer(1000);
         myTimer.setID(progressBar);
-
-        new CountDownTimer(1000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                setRandomNumber();
-                firstNum = Integer.parseInt(num.getText().toString());
-            }
-
-            @Override
-            public void onFinish() {
-                setRandomNumber();
-                lastNum = Integer.parseInt(num.getText().toString());
-
-            }
-        }.start();
-
         myTimer.setOnTickHtmlListener(gameLose);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                main_view.setVisibility(View.VISIBLE);
+                fab.setVisibility(View.GONE);
+                new CountDownTimer(1200, 1000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        setRandomNumber();
+                        firstNum = Integer.parseInt(num.getText().toString());
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        setRandomNumber();
+                        lastNum = Integer.parseInt(num.getText().toString());
+                        myTimer.tick();
+
+                    }
+                }.start();
+            }
+        });
+
+
     }
 
     private void setRandomNumber() {
@@ -80,12 +92,11 @@ public class HigherOrLower extends AppCompatActivity {
                     firstNum = lastNum;
                     lastNum = Integer.parseInt(num.getText().toString());
                     myScore++;
-                    score.setText("Your score: " + myScore);
+                    score.setText("" + myScore);
                     SoundUtil.play(this, SoundUtil.WIN);
-
                     myTimer.tick();
                 } else {
-                    score.setText("Your score: " + myScore);
+                    score.setText("" + myScore);
                     gameLose.sendEmptyMessage(0);
                 }
                 break;
@@ -96,11 +107,11 @@ public class HigherOrLower extends AppCompatActivity {
                     firstNum = lastNum;
                     lastNum = Integer.parseInt(num.getText().toString());
                     myScore++;
-                    score.setText("Your score: " + myScore);
+                    score.setText("" + myScore);
                     SoundUtil.play(this, SoundUtil.WIN);
                     myTimer.tick();
                 } else {
-                    score.setText("Your score: " + myScore);
+                    score.setText("" + myScore);
                     gameLose.sendEmptyMessage(0);
                 }
                 break;
