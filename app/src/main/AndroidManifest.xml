@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vlth.brainbreak" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <activity android:name="vlth.brainbreak.MixWord" >
+        </activity>
+        <activity android:name="vlth.brainbreak.HigherOrLower" >
+        </activity>
+        <activity android:name="vlth.brainbreak.FreakingMath" >
+        </activity>
+        <activity android:name="vlth.brainbreak.ColorShape" >
+        </activity>
+
+        <activity android:name="vlth.brainbreak.HomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

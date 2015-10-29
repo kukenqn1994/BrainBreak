@@ -1,0 +1,170 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vlth.brainbreak.FreakingMath"
+    android:background="@color/accent_material_light"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <vlth.brainbreak.Library.NumberProgressBar
+            android:id="@+id/prog"
+            android:layout_width="200dip"
+            android:layout_height="wrap_content"
+
+            custom:progress_unreached_color="#CCCCCC"
+            custom:progress_reached_color="#3498DB"
+
+            custom:progress_unreached_bar_height="3.75dp"
+            custom:progress_reached_bar_height="10.5dp"
+
+            custom:progress_text_size="20sp"
+            custom:progress_text_color="#3498DB"
+            custom:progress_text_offset="1dp"
+            custom:progress_text_visibility="visible"
+
+            android:layout_gravity="center"
+
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="10dip">
+
+            <TextView
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:id="@+id/num1"
+                android:textSize="@android:dimen/app_icon_size"
+                android:layout_toLeftOf="@+id/im3"
+                android:layout_toStartOf="@+id/im3"
+                android:clickable="false"
+                android:textColor="#5b3716"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:id="@+id/math"
+                android:textSize="@android:dimen/app_icon_size"
+                android:layout_alignTop="@+id/im1"
+                android:layout_centerHorizontal="true"
+                android:clickable="false"
+                android:textColor="#5b3716"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:id="@+id/num2"
+                android:textSize="@android:dimen/app_icon_size"
+                android:clickable="false"
+                android:textColor="#5b3716"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="100dip"
+            android:layout_height="70dip"
+            android:id="@+id/ans"
+            android:clickable="false"
+            android:textSize="@android:dimen/app_icon_size"
+            android:textColor="#5b3716"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dip"
+            android:textAlignment="center"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="10dip">
+
+            <Button
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:id="@+id/btn1"
+                android:background="@drawable/btntrue"
+                android:textSize="@android:dimen/app_icon_size"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_marginLeft="25dip"
+                android:id="@+id/btn2"
+                android:background="@drawable/btnfalse"
+                android:textSize="@android:dimen/app_icon_size"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="10dip">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Point: "
+                android:textSize="20dip"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/point"
+                android:textSize="20dip"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginTop="10dip">
+
+            <ImageView
+                android:layout_width="150dip"
+                android:layout_height="50dip"
+                android:src="@drawable/btnplay"
+                android:onClick="btnstart"
+                android:id="@+id/btnplay"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="150dip"
+                android:layout_height="50dip"
+                android:src="@drawable/btnback"
+                android:onClick="btnback"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

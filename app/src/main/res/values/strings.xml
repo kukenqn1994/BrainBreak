@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MyProject</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <string-array name="mix_word">
+        <item>action</item>
+        <item>animal</item>
+        <item>apple</item>
+        <item>banana</item>
+        <item>candy</item>
+        <item>chicken</item>
+        <item>coffee</item>
+        <item>correct</item>
+        <item>clean</item>
+        <item>cheese</item>
+    </string-array>
+    <string name="title_activity_freaking_math">FreakingMath</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_color_shape">ColorShape</string>
+</resources>
