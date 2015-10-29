@@ -1,4 +1,4 @@
-package vlth.myproject.Util;
+package vlth.brainbreak.Util;
 
 /**
  * Created by Administrator on 10/21/2015.

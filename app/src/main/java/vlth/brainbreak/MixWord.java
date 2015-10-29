@@ -1,4 +1,4 @@
-package vlth.myproject;
+package vlth.brainbreak;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-import vlth.myproject.Library.NumberProgressBar;
-import vlth.myproject.Util.HighScore;
-import vlth.myproject.Util.ID;
-import vlth.myproject.Util.MyTimer;
-import vlth.myproject.Util.SoundUtil;
+import vlth.brainbreak.Library.NumberProgressBar;
+import vlth.brainbreak.Util.HighScore;
+import vlth.brainbreak.Util.ID;
+import vlth.brainbreak.Util.MyTimer;
+import vlth.brainbreak.Util.SoundUtil;
 
 public class MixWord extends AppCompatActivity {
 

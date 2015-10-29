@@ -1,28 +1,18 @@
-package vlth.myproject.Util;
+package vlth.brainbreak.Util;
 
 /**
  * Created by Administrator on 10/16/2015.
  */
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+
+import vlth.brainbreak.Library.NumberProgressBar;
+
+public class MyTimer extends Activity {
 
 
-import vlth.myproject.Library.NumberProgressBar;
-
-import static android.graphics.Color.BLUE;
-
-public class MyTimer extends Activity{
-
-    public int miliSecond;
     private int miliSecond;
     private Handler handler;
     private NumberProgressBar progressBar;
@@ -31,12 +21,13 @@ public class MyTimer extends Activity{
     public void setOnTickHtmlListener(Handler handler) {
         this.handler = handler;
     }
-    public void setID(NumberProgressBar progressBar){
-        this.progressBar=progressBar;
+
+    public void setID(NumberProgressBar progressBar) {
+        this.progressBar = progressBar;
     }
 
-    public MyTimer(int ms){
-        this.miliSecond=ms;
+    public MyTimer(int ms) {
+        this.miliSecond = ms;
     }
 
     public void tick() {
@@ -51,6 +42,7 @@ public class MyTimer extends Activity{
                 // TODO Auto-generated method stub
                 progressBar.setProgress((int) millisUntilFinished);
             }
+
             @Override
             public void onFinish() {
                 handler.sendEmptyMessage(0);

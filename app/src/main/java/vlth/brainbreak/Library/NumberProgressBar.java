@@ -1,4 +1,4 @@
-package vlth.myproject.Library;
+package vlth.brainbreak.Library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,10 +11,10 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import vlth.myproject.R;
+import vlth.brainbreak.R;
 
-import static vlth.myproject.Library.NumberProgressBar.ProgressTextVisibility.Invisible;
-import static vlth.myproject.Library.NumberProgressBar.ProgressTextVisibility.Visible;
+import static vlth.brainbreak.Library.NumberProgressBar.ProgressTextVisibility.Invisible;
+import static vlth.brainbreak.Library.NumberProgressBar.ProgressTextVisibility.Visible;
 
 /**
  * Created by daimajia on 14-4-30.
@@ -195,8 +195,8 @@ public class NumberProgressBar extends View {
             mIfDrawText = false;
         }
 
-//        setProgress(attributes.getInt(vlth.myproject.R.styleable.NumberProgressBar_progress_current, 0));
-//        setMax(attributes.getInt(vlth.myproject.R.styleable.NumberProgressBar_progress_max, 100));
+//        setProgress(attributes.getInt(vlth.brainbreak.R.styleable.NumberProgressBar_progress_current, 0));
+//        setMax(attributes.getInt(vlth.brainbreak.R.styleable.NumberProgressBar_progress_max, 100));
 
         attributes.recycle();
         initializePainters();

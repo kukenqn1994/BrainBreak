@@ -1,4 +1,4 @@
-package vlth.myproject.Library;
+package vlth.brainbreak.Library;
 
 /**
  * Created by lelexxx on 15-4-23.

@@ -1,4 +1,4 @@
-package vlth.myproject;
+package vlth.brainbreak;
 
 import android.content.Intent;
 import android.content.pm.PackageInstaller;
@@ -27,19 +27,19 @@ import com.facebook.share.widget.ShareDialog;
 import java.util.ArrayList;
 import java.util.List;
 
-import vlth.myproject.Adapter.ListGameAdapter;
-import vlth.myproject.Model.ItemGame;
-import vlth.myproject.Util.HighScore;
-import vlth.myproject.Util.ID;
+import vlth.brainbreak.Adapter.ListGameAdapter;
+import vlth.brainbreak.Model.ItemGame;
+import vlth.brainbreak.Util.HighScore;
+import vlth.brainbreak.Util.ID;
 
 public class HomeActivity extends AppCompatActivity {
     public static final String[] titles = new String[]{"Higer or Lower",
             "Mix Word", "Freaking Math", "Color or Shape"};
-    public static final String[] titles = new String[] { "Higer or Lower",
-            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
+//    public static final String[] titles = new String[] { "Higer or Lower",
+//            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
 
-    public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
-
+//    public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
+    public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo};
     ListView listView;
     List<ItemGame> rowItems;
     private HighScore highScore;
@@ -101,15 +101,14 @@ public class HomeActivity extends AppCompatActivity {
 
 
         highScore = new HighScore(this);
-        int[] best_score = {highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
-                highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
-                highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
-                highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0)};
+//        int[] best_score = {highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
+//                highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
+//                highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
+//                highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0)};
         int[] best_score={highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER,0),
                 highScore.getScore(ID.HIGH_SCORE_MIX_WORD,0),
                 highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH,0),
-                highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE,0),
-        highScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0)};
+                highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE,0)};
 
         rowItems = new ArrayList<ItemGame>();
         for (int i = 0; i < titles.length; i++) {
@@ -140,8 +139,8 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this, ColorShape.class));
                         finish();
                         break;
-                    case 4:
-                        startActivity(new Intent(HomeActivity.this, NumberMemory.class));
+//                    case 4:
+//                        startActivity(new Intent(HomeActivity.this, NumberMemory.class));
                 }
             }
         });
