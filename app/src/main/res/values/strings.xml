@@ -25,4 +25,5 @@
     <string name="facebook_app_id">787782571365958</string>
 
     <string name="title_activity_number_memory">NumberMemory</string>
+    <string name="title_activity_image_memory">ImageMemory</string>
 </resources>
