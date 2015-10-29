@@ -5,7 +5,10 @@
     android:orientation="vertical"
     android:weightSum="1"
     tools:context="vlth.myproject.HomeActivity">
-
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar">
+    </include>
     <ListView
         android:id="@+id/list_game"
         android:layout_width="match_parent"

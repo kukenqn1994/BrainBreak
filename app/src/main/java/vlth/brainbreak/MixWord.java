@@ -48,7 +48,7 @@ public class MixWord extends AppCompatActivity {
         highScore=new HighScore(this);
         prototype();
         setRandomAnsser();
-        myTimer = new MyTimer(4000);
+        myTimer = new MyTimer(2000);
         myTimer.setID(progressBar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

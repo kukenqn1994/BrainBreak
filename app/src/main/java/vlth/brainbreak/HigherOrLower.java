@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -32,11 +33,29 @@ public class HigherOrLower extends AppCompatActivity {
     private FloatingActionButton fab;
     private HighScore highScore;
     private LinearLayout timer_layout, main_view;
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // add toolbar
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Higher or Lower");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HigherOrLower.this,HomeActivity.class));
+                finish();
+            }
+        });
+
+
+
+
         highScore = new HighScore(this);
         score = (TextView) findViewById(R.id.point);
         btH = (ImageButton) findViewById(R.id.btHigher);
@@ -46,7 +65,7 @@ public class HigherOrLower extends AppCompatActivity {
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         main_view=(LinearLayout)findViewById(R.id.layout_main);
 
-        myTimer = new MyTimer(1000);
+        myTimer = new MyTimer(1500);
         myTimer.setID(progressBar);
         myTimer.setOnTickHtmlListener(gameLose);
 
