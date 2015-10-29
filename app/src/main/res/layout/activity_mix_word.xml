@@ -19,7 +19,7 @@
             android:layout_weight="0.15"
             android:orientation="vertical">
 
-            <vlth.myproject.Library.NumberProgressBar
+            <vlth.brainbreak.Library.NumberProgressBar
                 android:id="@+id/proTimer"
                 style="@style/NumberProgressBar_Default" />
 

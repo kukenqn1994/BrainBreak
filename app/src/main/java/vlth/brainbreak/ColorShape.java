@@ -44,7 +44,7 @@ public class ColorShape extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_shape);
 
-        prog = (NumberProgressBar) findViewById(R.id.prog);
+        prog = (NumberProgressBar) findViewById(R.id.proTimer);
         noti = (TextView) findViewById(R.id.noti);
         tw1 = (TextView) findViewById(R.id.tw1);
         tw2 = (TextView) findViewById(R.id.tw2);

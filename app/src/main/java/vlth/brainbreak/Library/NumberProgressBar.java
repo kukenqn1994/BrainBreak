@@ -496,10 +496,8 @@ public class NumberProgressBar extends View {
         mIfDrawText = visibility == Visible;
         invalidate();
     }
-
     public boolean getProgressTextVisibility() {
         return mIfDrawText;
     }
-
 
 }

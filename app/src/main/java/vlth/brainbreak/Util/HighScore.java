@@ -1,6 +1,5 @@
 package vlth.brainbreak.Util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -16,21 +15,23 @@ public class HighScore {
     private static SharedPreferences preferences;
     private static SharedPreferences.Editor edit;
     private static Context context;
-    public HighScore(Context context){
-        this.context=context;
+
+    public HighScore(Context context) {
+        this.context = context;
     }
-    public static void setScore(String key, int val){
-        if(context instanceof MixWord){
-            preferences = context.getSharedPreferences(ID.GAME,0);
+
+    public static void setScore(String key, int val) {
+        if (context instanceof MixWord) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
         }
-        if(context instanceof HigherOrLower){
-            preferences = context.getSharedPreferences(ID.GAME,0);
+        if (context instanceof HigherOrLower) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
         }
-        if (context instanceof FreakingMath){
-            preferences = context.getSharedPreferences(ID.GAME,0);
+        if (context instanceof FreakingMath) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
         }
-        if (context instanceof ColorShape){
-            preferences = context.getSharedPreferences(ID.GAME,0);
+        if (context instanceof ColorShape) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
         }
 
         edit = preferences.edit();
@@ -39,8 +40,8 @@ public class HighScore {
         edit.commit();
     }
 
-    public static int getScore(String key, int defVal){
-       preferences=context.getSharedPreferences(ID.GAME,0);
+    public static int getScore(String key, int defVal) {
+        preferences = context.getSharedPreferences(ID.GAME, 0);
         return preferences.getInt(key, defVal);
     }
 }
