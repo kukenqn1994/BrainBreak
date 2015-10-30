@@ -23,7 +23,8 @@
     <string name="title_activity_color_shape">ColorShape</string>
 
     <string name="facebook_app_id">928116567223745</string>
-
+    <string name="appLink">https://www.google.com</string>
+    <string name="imageLink">http://ford-life.com/wp-content/uploads/2013/01/ford-sync-applink-ces.jpg</string>
     <string name="title_activity_number_memory">NumberMemory</string>
     <string name="title_activity_image_memory">ImageMemory</string>
 </resources>

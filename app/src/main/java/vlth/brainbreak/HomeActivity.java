@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bolts.AppLink;
+import bolts.AppLinks;
 import vlth.brainbreak.Adapter.ListGameAdapter;
 import vlth.brainbreak.Model.ItemGame;
 import vlth.brainbreak.Util.HighScore;
@@ -56,13 +59,18 @@ public class HomeActivity extends AppCompatActivity {
     private ShareDialog shareDialog;
     LinearLayout ll;
     private Bitmap myBitmap;
-    private LoginButton loginButton;
+    //private LoginButton loginButton;
+    private final String appLink= "https://fb.me/928178163884252";
+    private final String imageLink = "http://ford-life.com/wp-content/uploads/2013/01/ford-sync-applink-ces.jpg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-
+        Uri targetUrl = AppLinks.getTargetUrlFromInboundIntent(HomeActivity.this, getIntent());
+        if (targetUrl != null) {
+            Log.i("Activity", "App Link Target URL: " + targetUrl.toString());
+        }
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(this);
         // this part is optional
@@ -71,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         btInvite = (Button) findViewById(R.id.btInvite);
-        //btLogin = (Button) findViewById(R.id.btLogin);
+        btLogin = (Button) findViewById(R.id.btLogin);
         btInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,7 +182,7 @@ public class HomeActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-        loginButton=(LoginButton)findViewById(R.id.btLogin);
+/*        loginButton=(LoginButton)findViewById(R.id.btLogin);
 
         loginButton.setReadPermissions("user_friends","public_profile");
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
@@ -197,6 +205,19 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
         );
+*/
+        btLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (AppInviteDialog.canShow()) {
+                    AppInviteContent content = new AppInviteContent.Builder()
+                            .setApplinkUrl(appLink)
+                            .setPreviewImageUrl(imageLink)
+                            .build();
+                    AppInviteDialog.show(HomeActivity.this, content);
+                }
+            }
+        });
 
     }
 
