@@ -75,16 +75,16 @@ public class HomeActivity extends AppCompatActivity {
         btInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String appLinkUrl, previewImageUrl;
+//                String appLinkUrl, previewImageUrl;
 
-                appLinkUrl = "https://fb.me/787851144692434";
-                previewImageUrl = "http://2.bp.blogspot.com/-99shOruuadw/VQsG2T233sI/AAAAAAAAEi0/noFTxUBh_rg/s1600/appscripts.png";
-
-                AppInviteContent content = new AppInviteContent.Builder()
-                        .setApplinkUrl(appLinkUrl)
-                        .setPreviewImageUrl(previewImageUrl)
-                        .build();
-                AppInviteDialog.show(HomeActivity.this, content);
+//                appLinkUrl = "https://fb.me/787851144692434";
+//                previewImageUrl = "http://2.bp.blogspot.com/-99shOruuadw/VQsG2T233sI/AAAAAAAAEi0/noFTxUBh_rg/s1600/appscripts.png";
+//
+//                AppInviteContent content = new AppInviteContent.Builder()
+//                        .setApplinkUrl(appLinkUrl)
+//                        .setPreviewImageUrl(previewImageUrl)
+//                        .build();
+//                AppInviteDialog.show(HomeActivity.this, content);
 
 //                startActivity(new Intent(HomeActivity.this,InviteFriendsActivity.class));
 
@@ -113,10 +113,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         highScore = new HighScore(this);
-//        int[] best_score = {highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
-//                highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
-//                highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
-//                highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0)};
+//
         int[] best_score = {highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
                 highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
                 highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
@@ -157,26 +154,26 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-        ll = (LinearLayout) findViewById(R.id.home_layout);
-        ll.post(new Runnable() {
-            @Override
-            public void run() {
-                myBitmap = captureScreen(ll);
-                Toast.makeText(getApplicationContext(), "Screenshot captured..!", Toast.LENGTH_LONG).show();
-                try {
-
-                    if (myBitmap != null) {
-                        //save image to SD card
-                        saveImage(myBitmap);
-                        Toast.makeText(getApplicationContext(), "Screenshot saved..!", Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        });
+//        ll = (LinearLayout) findViewById(R.id.home_layout);
+//        ll.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                myBitmap = captureScreen(ll);
+//                Toast.makeText(getApplicationContext(), "Screenshot captured..!", Toast.LENGTH_LONG).show();
+//                try {
+//
+//                    if (myBitmap != null) {
+//                        //save image to SD card
+//                        saveImage(myBitmap);
+//                        Toast.makeText(getApplicationContext(), "Screenshot saved..!", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                } catch (IOException e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
         loginButton=(LoginButton)findViewById(R.id.btLogin);
 
         loginButton.setReadPermissions("user_friends","public_profile");
