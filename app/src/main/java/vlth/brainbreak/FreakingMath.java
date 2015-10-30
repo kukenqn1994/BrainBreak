@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -30,10 +33,12 @@ public class FreakingMath extends AppCompatActivity {
     private NumberProgressBar pr;
     String result;
     String ans;
-
+    private FloatingActionButton fabtn;
     private boolean finish = false;
     private HighScore highScore;
     private int myScore = 0;
+    private Toolbar toolbar;
+    private LinearLayout mainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +64,35 @@ public class FreakingMath extends AppCompatActivity {
         bt3.setTypeface(custom_fonts);
         res.setTypeface(custom_fonts);
 
+        // Them vao
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Freaking Math");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
+                finish();
+            }
+        });
+
+        mainView = (LinearLayout) findViewById(R.id.FreakingMath);
+        fabtn = (FloatingActionButton) findViewById(R.id.fab);
+        fabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainView.setVisibility(View.VISIBLE);
+                fabtn.setVisibility(View.GONE);
+                btnstart(null);
+            }
+        });
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -34,6 +34,7 @@ public class HigherOrLower extends AppCompatActivity {
     private HighScore highScore;
     private LinearLayout timer_layout, main_view;
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

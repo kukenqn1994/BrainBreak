@@ -1,0 +1,118 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar">
+    </include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ImageMemmory_layout"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="vertical"
+            android:weightSum="1"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"></LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap the first image"
+                android:textSize="30sp"
+                android:id="@+id/request"
+                android:layout_weight="0.2"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/request"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:id="@+id/picture"
+            android:layout_weight="0.4">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:id="@+id/Img1"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:id="@+id/Img2"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:id="@+id/Img3"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:id="@+id/Img4"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="1">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready"
+                android:textSize="30sp"
+                android:id="@+id/ready"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.2"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textSize="30sp"
+                android:id="@+id/back"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="0.2"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_media_play" />
+</FrameLayout>
