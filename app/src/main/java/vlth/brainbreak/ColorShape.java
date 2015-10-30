@@ -2,13 +2,16 @@ package vlth.brainbreak;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.graphics.Color;
 
@@ -39,6 +42,11 @@ public class ColorShape extends AppCompatActivity {
     private boolean finish = false;
     private HighScore highScore;
     private int myScore = 0;
+    // Them vao
+    private FloatingActionButton fabtn;
+    private LinearLayout mainView;
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +63,32 @@ public class ColorShape extends AppCompatActivity {
         point = (TextView) findViewById(R.id.point);
 
         btnplay = (ImageView) findViewById(R.id.btnplay);
+
+        // Them vao
+        fabtn = (FloatingActionButton) findViewById(R.id.fab);
+        mainView = (LinearLayout) findViewById(R.id.ColorShape);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        fabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainView.setVisibility(View.VISIBLE);
+                fabtn.setVisibility(View.GONE);
+                btnstart(null);
+            }
+        });
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Color & Shape");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ColorShape.this, HomeActivity.class));
+                finish();
+            }
+        });
 
     }
 
