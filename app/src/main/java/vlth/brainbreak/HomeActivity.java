@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -18,15 +19,14 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookOperationCanceledException;
 import com.facebook.FacebookSdk;
 import com.facebook.internal.WebDialog;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.facebook.share.widget.ShareDialog;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import vlth.brainbreak.Adapter.ListGameAdapter;
 import vlth.brainbreak.Model.ItemGame;
 import vlth.brainbreak.Util.HighScore;
@@ -35,10 +35,7 @@ import vlth.brainbreak.Util.ID;
 public class HomeActivity extends AppCompatActivity {
     public static final String[] titles = new String[]{"Higer or Lower",
             "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
-//    public static final String[] titles = new String[] { "Higer or Lower",
-//            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
 
-//    public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
     public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
     ListView listView;
     List<ItemGame> rowItems;
@@ -49,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
     private Bundle dialogParams = null;
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
+    private LoginButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
 //            ...});
         setContentView(R.layout.activity_home);
         btInvite = (Button) findViewById(R.id.btInvite);
-        btLogin = (Button) findViewById(R.id.btLogin);
+        //btLogin = (Button) findViewById(R.id.btLogin);
         btInvite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,8 +92,6 @@ public class HomeActivity extends AppCompatActivity {
 //
 //                    shareDialog.show(linkContent);
 //                }
-
-
             }
         });
 
@@ -145,8 +141,29 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+        // Them vao
+        loginButton = (LoginButton) findViewById(R.id.btLogin);
+        loginButton.setReadPermissions("user_friends", "public_profile");
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Toast.makeText(HomeActivity.this, loginResult.getAccessToken().getUserId(), Toast.LENGTH_LONG).show();
+            }
 
+            @Override
+            public void onCancel() {
+                Toast.makeText(HomeActivity.this, "Cancel login", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+                Toast.makeText(HomeActivity.this, "Error", Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
+
+
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

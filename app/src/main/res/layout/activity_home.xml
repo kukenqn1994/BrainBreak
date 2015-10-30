@@ -21,16 +21,12 @@
         android:layout_weight="0.1"
         android:weightSum="1"
         android:orientation="horizontal">
-        <Button
+        <com.facebook.login.widget.LoginButton
             android:id="@+id/btLogin"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="#3b5998"
             android:layout_weight="0.5"
-            android:text="Login Facebook"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textStyle="bold"/>
+            android:layout_gravity="center"/>
         <Button
             android:id="@+id/btInvite"
             android:layout_marginLeft="4dp"
