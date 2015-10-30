@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="vlth.myproject.HomeActivity">
+    tools:context="vlth.brainbreak.HomeActivity"
+    android:id="@+id/home_layout">
     <include
         android:id="@+id/toolbar"
         layout="@layout/tool_bar">
