@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class MixWord extends AppCompatActivity {
     private String correct_answer="";
 
     private HighScore highScore;
-    private FloatingActionButton fab;
+    private ImageButton fab;
     private LinearLayout main_view;
 
     // Them vao
@@ -91,7 +92,7 @@ public class MixWord extends AppCompatActivity {
         txtScore = (TextView) findViewById(R.id.point);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         word_array = getResources().getStringArray(R.array.mix_word);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (ImageButton) findViewById(R.id.fab);
         main_view=(LinearLayout)findViewById(R.id.main_layout);
     }
 
@@ -185,6 +186,7 @@ public class MixWord extends AppCompatActivity {
             SoundUtil.play(MixWord.this, SoundUtil.DIE);
             EndDialog endDialog = new EndDialog(MixWord.this, closeDialog);
             endDialog.show();
+            myTimer.stop();
             finish = true;
         }
 

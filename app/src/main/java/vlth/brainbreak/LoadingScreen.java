@@ -2,73 +2,46 @@ package vlth.brainbreak;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
-public class LoadingScreen extends Activity {
-    protected boolean _active = true;
-    protected int _splashTime = 5000;
+import vlth.brainbreak.Util.MyTimer;
 
+public class LoadingScreen extends Activity {
+    CountDownTimer timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_screen);
 
-        Thread thread = new Thread() {
+        timer =new CountDownTimer(1500,100) {
             @Override
-            public void run() {
-                try {
-                    int waited = 0;
-                    while (_active && (waited < _splashTime)) {
-                        sleep(100);
-                        if (_active) {
-                            waited +=100;
-                        }
-                    }
-                } catch (InterruptedException e) {
-
-                } finally {
-                    finish();
-                    Intent mainIntent = new Intent (LoadingScreen.this, HomeActivity.class);
-                    LoadingScreen.this.startActivity(mainIntent);
-                    LoadingScreen.this.finish();
-                }
+            public void onTick(long millisUntilFinished) {
             }
-        };
-        thread.start();
+
+            @Override
+            public void onFinish() {
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                finish();
+            }
+        }.start();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            _active = false;
+            timer.onFinish();
+            if (timer != null) {
+                timer.cancel();
+            }
         }
         return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_loading_screen, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

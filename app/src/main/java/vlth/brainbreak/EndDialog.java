@@ -11,7 +11,10 @@ import android.os.Environment;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowAnimationFrameStats;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,11 +35,11 @@ public class EndDialog extends Dialog {
 
     private final ShareDialog shareDialog;
     private final CallbackManager callbackManager;
-    private RelativeLayout root;
+    private LinearLayout root;
     private int current_score = 0;
     private int best_score = 0;
     private TextView mTvYourMove, mTvYourBest;
-    Button share;
+    ImageButton share;
 
     public EndDialog(final Context context, final Handler handler) {
         super(context);
@@ -45,17 +48,18 @@ public class EndDialog extends Dialog {
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog((Activity) context);
 
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_test);
-        RelativeLayout layout=(RelativeLayout)this.findViewById(R.id.root);
+//        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_test);
+//        getWindow().setLayout(480,480);
+
+        LinearLayout layout=(LinearLayout)this.findViewById(R.id.root);
 
         mTvYourMove = (TextView) this.findViewById(R.id.yourMove);
         mTvYourBest = (TextView) this.findViewById(R.id.yourBest);
-        share=(Button)findViewById(R.id.btShare);
+//        share=(ImageButton)findViewById(R.id.btShare);
 
-        root = (RelativeLayout) findViewById(R.id.root);
+        root = (LinearLayout) findViewById(R.id.root);
         root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,18 +76,18 @@ public class EndDialog extends Dialog {
             }
         });
 
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(takeScreenshot())
-                        .build();
-                SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
-                        .build();
-                ShareDialog.show((Activity) context, content);
-            }
-        });
+//        share.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SharePhoto photo = new SharePhoto.Builder()
+//                        .setBitmap(takeScreenshot())
+//                        .build();
+//                SharePhotoContent content = new SharePhotoContent.Builder()
+//                        .addPhoto(photo)
+//                        .build();
+//                ShareDialog.show((Activity) context, content);
+//            }
+//        });
 
         if(context instanceof HigherOrLower){
             current_score= HighScore.getScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER,0);

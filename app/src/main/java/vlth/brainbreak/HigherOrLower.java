@@ -1,6 +1,7 @@
 package vlth.brainbreak;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -26,13 +27,13 @@ public class HigherOrLower extends AppCompatActivity {
     private ImageButton btH;
     private ImageButton btL;
     private TextView num, score;
-    private int firstNum, lastNum, myScore = 0;
+    private int firstNum, lastNum, ranNum = -1, temp = -1, myScore = 0;
     private NumberProgressBar progressBar;
     private MyTimer myTimer;
     private boolean finish = false;
     private FloatingActionButton fab;
     private HighScore highScore;
-    private LinearLayout timer_layout, main_view;
+    private LinearLayout main_view;
     private Toolbar toolbar;
 
     @Override
@@ -40,7 +41,7 @@ public class HigherOrLower extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // add toolbar
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Higher or Lower");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,13 +50,10 @@ public class HigherOrLower extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HigherOrLower.this,HomeActivity.class));
+                startActivity(new Intent(HigherOrLower.this, HomeActivity.class));
                 finish();
             }
         });
-
-
-
 
         highScore = new HighScore(this);
         score = (TextView) findViewById(R.id.point);
@@ -64,8 +62,10 @@ public class HigherOrLower extends AppCompatActivity {
         num = (TextView) findViewById(R.id.number);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
-        main_view=(LinearLayout)findViewById(R.id.layout_main);
-
+        main_view = (LinearLayout) findViewById(R.id.layout_main);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sketch_Block.ttf");
+        num.setTypeface(font);
+        score.setTypeface(font);
         myTimer = new MyTimer(1500);
         myTimer.setID(progressBar);
         myTimer.setOnTickHtmlListener(gameLose);
@@ -78,16 +78,19 @@ public class HigherOrLower extends AppCompatActivity {
                 new CountDownTimer(1200, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        setRandomNumber();
+                        setRandomNumberLV1();
                         firstNum = Integer.parseInt(num.getText().toString());
+                        btH.setEnabled(false);
+                        btL.setEnabled(false);
                     }
 
                     @Override
                     public void onFinish() {
-                        setRandomNumber();
+                        setRandomNumberLV1();
                         lastNum = Integer.parseInt(num.getText().toString());
                         myTimer.tick();
-
+                        btH.setEnabled(true);
+                        btL.setEnabled(true);
                     }
                 }.start();
             }
@@ -95,20 +98,88 @@ public class HigherOrLower extends AppCompatActivity {
 
 
     }
-
-    private void setRandomNumber() {
+    private void setRandomNumberLV1() {
         Random r = new Random();
-        int i = r.nextInt(100);
-        num.setText("" + i);
+        temp = ranNum;
+        ranNum = r.nextInt(100);
+        if (temp == ranNum) {
+            setRandomNumberLV1();
+        }
+        num.setText("" + ranNum);
     }
-
+    private void setRandomNumberLV2() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(400)+100;
+        if (temp == ranNum) {
+            setRandomNumberLV2();
+        }
+        num.setText("" + ranNum);
+    }
+    private void setRandomNumberLV3() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(900)+100;
+        if (temp == ranNum) {
+            setRandomNumberLV3();
+        }
+        num.setText("" + ranNum);
+    }
+    private void setRandomNumberLV4() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(4000)+1000;
+        if (temp == ranNum) {
+            setRandomNumberLV4();
+        }
+        num.setText("" + ranNum);
+    }
+    private void setRandomNumberLV5() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(9000)+1000;
+        if (temp == ranNum) {
+            setRandomNumberLV5();
+        }
+        num.setText("" + ranNum);
+    }
+    private void setRandomNumberLV6() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(5000)+10000;
+        if (temp == ranNum) {
+            setRandomNumberLV6();
+        }
+        num.setText("" + ranNum);
+    }
+    private void setRandomNumberLV7() {
+        Random r = new Random();
+        temp = ranNum;
+        ranNum = r.nextInt(10000)+10000;
+        if (temp == ranNum) {
+            setRandomNumberLV7();
+        }
+        num.setText("" + ranNum);
+    }
     public void choose(View view) {
 
         switch (view.getId()) {
             case R.id.btHigher:
-
                 if (lastNum > firstNum) {
-                    setRandomNumber();
+                    if(myScore<10)
+                        setRandomNumberLV1();
+                    else if (myScore>=10&&myScore<20)
+                        setRandomNumberLV2();
+                    else if (myScore>=10&&myScore<20)
+                        setRandomNumberLV3();
+                    else if (myScore>=20&&myScore<30)
+                        setRandomNumberLV4();
+                    else if (myScore>=30&&myScore<60)
+                        setRandomNumberLV5();
+                    else if (myScore>=60&&myScore<80)
+                        setRandomNumberLV6();
+                    else if (myScore>=80)
+                        setRandomNumberLV7();
                     firstNum = lastNum;
                     lastNum = Integer.parseInt(num.getText().toString());
                     myScore++;
@@ -121,9 +192,21 @@ public class HigherOrLower extends AppCompatActivity {
                 }
                 break;
             case R.id.btLower:
-
                 if (lastNum < firstNum) {
-                    setRandomNumber();
+                    if(myScore<10)
+                        setRandomNumberLV1();
+                    else if (myScore>=10&&myScore<20)
+                        setRandomNumberLV2();
+                    else if (myScore>=10&&myScore<20)
+                        setRandomNumberLV3();
+                    else if (myScore>=20&&myScore<30)
+                        setRandomNumberLV4();
+                    else if (myScore>=30&&myScore<60)
+                        setRandomNumberLV5();
+                    else if (myScore>=60&&myScore<80)
+                        setRandomNumberLV6();
+                    else if (myScore>=80)
+                        setRandomNumberLV7();
                     firstNum = lastNum;
                     lastNum = Integer.parseInt(num.getText().toString());
                     myScore++;
@@ -150,6 +233,7 @@ public class HigherOrLower extends AppCompatActivity {
             SoundUtil.play(HigherOrLower.this, SoundUtil.DIE);
             EndDialog endDialog = new EndDialog(HigherOrLower.this, closeDialog);
             endDialog.show();
+            myTimer.stop();
             finish = true;
         }
 

@@ -1,147 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tool_bar">
-    </include>
+    android:layout_height="match_parent">
+
     <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/main_layout"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar"></include>
 
         <LinearLayout
+            android:id="@+id/main_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.15"
-            android:orientation="vertical">
-
-            <vlth.brainbreak.Library.NumberProgressBar
-                android:id="@+id/proTimer"
-                style="@style/NumberProgressBar_Default" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="0"
-                    android:textSize="32sp" />
-
-                <TextView
-                    android:id="@+id/point"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:gravity="end"
-                    android:text="0"
-                    android:textSize="32sp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.55"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:textStyle="bold" />
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:visibility="gone"
             android:weightSum="1">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:orientation="horizontal"
-                android:weightSum="1">
+                android:layout_weight="0.15"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/ans1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <vlth.brainbreak.Library.NumberProgressBar
+                    android:id="@+id/proTimer"
+                    style="@style/NumberProgressBar_Default" />
+                <TextView
+                    android:id="@+id/point"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="0.5"
-                    android:background="@drawable/corner"
-                    android:onClick="answerClick"
-                    android:text="answer 1"
-                    android:textAllCaps="false"
-                    android:textColor="#fff" />
-
-                <Button
-                    android:id="@+id/ans2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/corner"
-                    android:onClick="answerClick"
-                    android:text="answer 2"
-                    android:textAllCaps="false"
-                    android:textColor="#fff" />
+                    android:gravity="end"
+                    android:paddingRight="8dp"
+                    android:text="0"
+                    android:textSize="32sp"
+                    android:weightSum="1" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.55"
+                android:gravity="center"
+                android:textSize="50sp"
+                android:textStyle="bold" />
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="0.5"
-
-                android:orientation="horizontal"
+                android:layout_weight="0.3"
+                android:orientation="vertical"
+                android:padding="8dp"
                 android:weightSum="1">
 
-                <Button
-                    android:id="@+id/ans3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/corner"
-                    android:onClick="answerClick"
-                    android:text="answer 3"
-                    android:textAllCaps="false"
-                    android:textColor="#fff" />
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                <Button
-                    android:id="@+id/ans4"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
+                    <Button
+                        android:id="@+id/ans1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/corner"
+                        android:onClick="answerClick"
+                        android:text="answer 1"
+                        android:textAllCaps="false"
+                        android:textColor="#fff" />
+
+                    <Button
+                        android:id="@+id/ans2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/corner"
+                        android:onClick="answerClick"
+                        android:text="answer 2"
+                        android:textAllCaps="false"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/corner"
-                    android:onClick="answerClick"
-                    android:text="answer 4"
-                    android:textAllCaps="false"
-                    android:textColor="#fff" />
+
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/ans3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/corner"
+                        android:onClick="answerClick"
+                        android:text="answer 3"
+                        android:textAllCaps="false"
+                        android:textColor="#fff" />
+
+                    <Button
+                        android:id="@+id/ans4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="0.5"
+                        android:background="@drawable/corner"
+                        android:onClick="answerClick"
+                        android:text="answer 4"
+                        android:textAllCaps="false"
+                        android:textColor="#fff" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
-    <android.support.design.widget.FloatingActionButton
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@android:drawable/ic_media_play" />-->
+    <ImageButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_media_play" />
+        android:background="@android:color/transparent"
+        android:textAllCaps="false"
+        android:src="@drawable/ic_joypad"
+        android:layout_gravity="center"/>
 </FrameLayout>

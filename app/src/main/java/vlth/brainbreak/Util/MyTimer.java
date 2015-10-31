@@ -50,5 +50,10 @@ public class MyTimer extends Activity {
         };
         timer.start();
     }
+    public void stop(){
+        if (timer != null) {
+            timer.cancel();
+        }
+    }
 
 }
