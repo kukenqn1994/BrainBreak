@@ -30,16 +30,25 @@
                 <vlth.brainbreak.Library.NumberProgressBar
                     android:id="@+id/proTimer"
                     style="@style/NumberProgressBar_Default" />
-                <TextView
-                    android:id="@+id/point"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:gravity="end"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="0"
-                    android:textSize="32sp"
-                    android:weightSum="1" />
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/point"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="0"
+                        android:textSize="32sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -128,18 +137,18 @@
     </LinearLayout>
 
     <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/fab"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_margin="@dimen/fab_margin"-->
-        <!--android:src="@android:drawable/ic_media_play" />-->
+    <!--android:id="@+id/fab"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/fab_margin"-->
+    <!--android:src="@android:drawable/ic_media_play" />-->
     <ImageButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@android:color/transparent"
-        android:textAllCaps="false"
-        android:src="@drawable/ic_joypad"
-        android:layout_gravity="center"/>
+        android:src="@drawable/ic_play2"
+       />
 </FrameLayout>

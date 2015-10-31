@@ -3,6 +3,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +51,10 @@ public class ListGameAdapter extends ArrayAdapter<ItemGame> {
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
-
-        holder.txtBestScore.setText(""+rowItem.getBest_score());
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Oblivious.ttf");
+        holder.txtBestScore.setTypeface(font);
+        holder.txtTitle.setTypeface(font);
+        holder.txtBestScore.setText("Best score: " + rowItem.getBest_score());
         holder.txtTitle.setText(rowItem.getTitle());
         holder.imageView.setImageResource(img);
 

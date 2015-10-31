@@ -31,10 +31,11 @@ public class HigherOrLower extends AppCompatActivity {
     private NumberProgressBar progressBar;
     private MyTimer myTimer;
     private boolean finish = false;
-    private FloatingActionButton fab;
+    private ImageButton fab;
     private HighScore highScore;
     private LinearLayout main_view;
     private Toolbar toolbar;
+    private TextView toolbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,13 @@ public class HigherOrLower extends AppCompatActivity {
         // add toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Higher or Lower");
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Higher or Lower");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,12 +65,16 @@ public class HigherOrLower extends AppCompatActivity {
         btH = (ImageButton) findViewById(R.id.btHigher);
         btL = (ImageButton) findViewById(R.id.btLower);
         num = (TextView) findViewById(R.id.number);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (ImageButton) findViewById(R.id.fab);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         main_view = (LinearLayout) findViewById(R.id.layout_main);
+
+        //set font
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sketch_Block.ttf");
         num.setTypeface(font);
         score.setTypeface(font);
+
+
         myTimer = new MyTimer(1500);
         myTimer.setID(progressBar);
         myTimer.setOnTickHtmlListener(gameLose);

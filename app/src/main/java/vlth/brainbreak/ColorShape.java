@@ -1,5 +1,6 @@
 package vlth.brainbreak;
 
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,9 +44,10 @@ public class ColorShape extends AppCompatActivity {
     private HighScore highScore;
     private int myScore = 0;
     // Them vao
-    private FloatingActionButton fabtn;
+    private ImageButton fabtn;
     private LinearLayout mainView;
     private Toolbar toolbar;
+    private TextView toolbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +65,17 @@ public class ColorShape extends AppCompatActivity {
         point = (TextView) findViewById(R.id.point);
 
         // Them vao
-        fabtn = (FloatingActionButton) findViewById(R.id.fab);
+        fabtn = (ImageButton) findViewById(R.id.fab);
         mainView = (LinearLayout) findViewById(R.id.ColorShape);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Higher or Lower");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setTypeface(fonts);
         fabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,10 +92,7 @@ public class ColorShape extends AppCompatActivity {
             }
         });
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Color & Shape");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

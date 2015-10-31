@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,12 +33,13 @@ public class FreakingMath extends AppCompatActivity {
     private NumberProgressBar pr;
     String result;
     String ans;
-    private FloatingActionButton fabtn;
+    private ImageButton fabtn;
     private boolean finish = false;
     private HighScore highScore;
     private int myScore = 0;
     private Toolbar toolbar;
     private LinearLayout mainView;
+    private TextView toolbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,13 @@ public class FreakingMath extends AppCompatActivity {
         // Them vao
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Freaking Math");
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Higher or Lower");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +83,7 @@ public class FreakingMath extends AppCompatActivity {
         });
 
         mainView = (LinearLayout) findViewById(R.id.FreakingMath);
-        fabtn = (FloatingActionButton) findViewById(R.id.fab);
+        fabtn = (ImageButton) findViewById(R.id.fab);
         fabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -5,28 +5,20 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Environment;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowAnimationFrameStats;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.SharePhoto;
-import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
-
-import java.io.File;
-import java.io.FileOutputStream;
+import com.larvalabs.svgandroid.SVG;
+import com.larvalabs.svgandroid.SVGParser;
 
 import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
@@ -35,14 +27,14 @@ public class EndDialog extends Dialog {
 
     private final ShareDialog shareDialog;
     private final CallbackManager callbackManager;
-    private LinearLayout root;
     private int current_score = 0;
     private int best_score = 0;
     private TextView mTvYourMove, mTvYourBest;
-    ImageButton share;
-
+    ImageButton share, replay, home;
+    Context context;
     public EndDialog(final Context context, final Handler handler) {
         super(context);
+        this.context=context;
         // TODO Auto-generated constructor stub
         FacebookSdk.sdkInitialize(context.getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
@@ -50,23 +42,15 @@ public class EndDialog extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
-//        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_test);
-//        getWindow().setLayout(480,480);
 
-        LinearLayout layout=(LinearLayout)this.findViewById(R.id.root);
+        LinearLayout layout = (LinearLayout) this.findViewById(R.id.root);
 
         mTvYourMove = (TextView) this.findViewById(R.id.yourMove);
         mTvYourBest = (TextView) this.findViewById(R.id.yourBest);
-//        share=(ImageButton)findViewById(R.id.btShare);
 
-        root = (LinearLayout) findViewById(R.id.root);
-        root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                EndDialog.this.dismiss();
-            }
-        });
+        share = (ImageButton) findViewById(R.id.btShare);
+        home = (ImageButton) findViewById(R.id.btHome);
+        replay = (ImageButton) findViewById(R.id.btReplay);
 
         setOnDismissListener(new OnDismissListener() {
             @Override
@@ -75,7 +59,19 @@ public class EndDialog extends Dialog {
                 handler.sendEmptyMessage(0);
             }
         });
-
+        replay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EndDialog.this.dismiss();
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, HomeActivity.class));
+//                EndDialog.this.dismiss();
+            }
+        });
 //        share.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -89,31 +85,31 @@ public class EndDialog extends Dialog {
 //            }
 //        });
 
-        if(context instanceof HigherOrLower){
-            current_score= HighScore.getScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER,0);
-            best_score=HighScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER,0);
-            if(current_score>best_score){
+        if (context instanceof HigherOrLower) {
+            current_score = HighScore.getScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER, 0);
+            best_score = HighScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0);
+            if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, current_score);
             }
         }
-        if(context instanceof MixWord){
-            current_score= HighScore.getScore(ID.NORMAL_SCORE_MIX_WORD,0);
-            best_score=HighScore.getScore(ID.HIGH_SCORE_MIX_WORD,0);
-            if(current_score>best_score){
+        if (context instanceof MixWord) {
+            current_score = HighScore.getScore(ID.NORMAL_SCORE_MIX_WORD, 0);
+            best_score = HighScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0);
+            if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_MIX_WORD, current_score);
             }
         }
-        if(context instanceof FreakingMath){
-            current_score= HighScore.getScore(ID.NORMAL_SCORE_FREAKING_MATH,0);
-            best_score=HighScore.getScore(ID.HIGH_SCORE_FREAKING_MATH,0);
-            if(current_score>best_score){
+        if (context instanceof FreakingMath) {
+            current_score = HighScore.getScore(ID.NORMAL_SCORE_FREAKING_MATH, 0);
+            best_score = HighScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0);
+            if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_FREAKING_MATH, current_score);
             }
         }
-        if(context instanceof ColorShape){
-            current_score= HighScore.getScore(ID.NORMAL_SCORE_COLOR_SHAPE,0);
-            best_score=HighScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE,0);
-            if(current_score>best_score){
+        if (context instanceof ColorShape) {
+            current_score = HighScore.getScore(ID.NORMAL_SCORE_COLOR_SHAPE, 0);
+            best_score = HighScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0);
+            if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_COLOR_SHAPE, current_score);
             }
         }

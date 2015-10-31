@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -62,7 +65,8 @@ public class HomeActivity extends AppCompatActivity {
     //private LoginButton loginButton;
     private final String appLink= "https://fb.me/928178163884252";
     private final String imageLink = "http://ford-life.com/wp-content/uploads/2013/01/ford-sync-applink-ces.jpg";
-
+    private Toolbar toolbar;
+    private TextView toolbarTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,16 @@ public class HomeActivity extends AppCompatActivity {
 //        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
 //            ...});
         setContentView(R.layout.activity_home);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        toolbarTitle.setText("Brain Breaks");
+        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setTypeface(font);
 
         btInvite = (Button) findViewById(R.id.btInvite);
         btLogin = (Button) findViewById(R.id.btLogin);
