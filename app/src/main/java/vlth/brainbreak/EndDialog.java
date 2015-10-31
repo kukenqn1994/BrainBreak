@@ -48,7 +48,7 @@ public class EndDialog extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
-        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog);
+        getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_test);
         RelativeLayout layout=(RelativeLayout)this.findViewById(R.id.root);
 
         mTvYourMove = (TextView) this.findViewById(R.id.yourMove);

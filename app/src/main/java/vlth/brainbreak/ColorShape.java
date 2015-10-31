@@ -30,7 +30,6 @@ public class ColorShape extends AppCompatActivity {
     private TextView tw1, tw2;
     private TextView point;
     private ImageView im1, im2;
-    private ImageView btnplay;
 
     public static int[] sqr = {R.drawable.square_green, R.drawable.square_yellow, R.drawable.square_red};
     public static int[] tri = {R.drawable.triangle_green, R.drawable.triangle_yellow, R.drawable.triangle_red};
@@ -62,8 +61,6 @@ public class ColorShape extends AppCompatActivity {
 
         point = (TextView) findViewById(R.id.point);
 
-        btnplay = (ImageView) findViewById(R.id.btnplay);
-
         // Them vao
         fabtn = (FloatingActionButton) findViewById(R.id.fab);
         mainView = (LinearLayout) findViewById(R.id.ColorShape);
@@ -73,7 +70,14 @@ public class ColorShape extends AppCompatActivity {
             public void onClick(View v) {
                 mainView.setVisibility(View.VISIBLE);
                 fabtn.setVisibility(View.GONE);
-                btnstart(null);
+
+                im1.setClickable(true);
+                im2.setClickable(true);
+
+                final MyTimer timer = new MyTimer(1500);
+
+                point.setText("");
+                play(timer, myScore);
             }
         });
 
@@ -125,7 +129,6 @@ public class ColorShape extends AppCompatActivity {
         timer.tick();
 
         noti.setText("");
-        btnplay.setClickable(false);
 
         rd = random2();
         switch (rd) {
@@ -244,16 +247,6 @@ public class ColorShape extends AppCompatActivity {
             startActivity(intent);
         }
     };
-
-    public void btnstart(View view) {
-        im1.setClickable(true);
-        im2.setClickable(true);
-
-        final MyTimer timer = new MyTimer(1500);
-
-        point.setText("");
-        play(timer, myScore);
-    }
 
     public int randomtype() {
         Random rd = new Random();

@@ -27,7 +27,6 @@ import vlth.brainbreak.Util.SoundUtil;
 public class FreakingMath extends AppCompatActivity {
 
     private TextView bt1, bt2, bt3, res;
-    private ImageView play;
     private Button ans1, ans2;
     private TextView tw;
     private NumberProgressBar pr;
@@ -53,8 +52,6 @@ public class FreakingMath extends AppCompatActivity {
         ans1 = (Button) findViewById(R.id.btn1);
         ans2 = (Button) findViewById(R.id.btn2);
         res = (TextView) findViewById(R.id.ans);
-
-        play = (ImageView) findViewById(R.id.btnplay);
 
         tw = (TextView) findViewById(R.id.point);
 
@@ -86,7 +83,11 @@ public class FreakingMath extends AppCompatActivity {
             public void onClick(View v) {
                 mainView.setVisibility(View.VISIBLE);
                 fabtn.setVisibility(View.GONE);
-                btnstart(null);
+
+                pr = (NumberProgressBar) findViewById(R.id.proTimer);
+                final MyTimer mytimer = new MyTimer(1500);
+                tw.setText(Integer.toString(myScore));
+                play(mytimer, myScore);
             }
         });
 
@@ -124,8 +125,6 @@ public class FreakingMath extends AppCompatActivity {
 
         int rd = random2();
         int wr;
-
-        play.setClickable(false);
 
         mytimer.setOnTickHtmlListener(gameLose);
         mytimer.setID(pr);
@@ -254,20 +253,6 @@ public class FreakingMath extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void btnstart(View view) {
-        pr = (NumberProgressBar) findViewById(R.id.proTimer);
-        final MyTimer mytimer = new MyTimer(1500);
-
-        tw.setText(Integer.toString(myScore));
-        play(mytimer, myScore);
-    }
-
-    public void btnback(View view) {
-        Intent backintent = new Intent(this, HomeActivity.class);
-        finish();
-        startActivity(backintent);
     }
 
     public int random30() {

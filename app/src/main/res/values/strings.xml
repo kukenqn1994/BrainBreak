@@ -27,4 +27,5 @@
     <string name="imageLink">http://ford-life.com/wp-content/uploads/2013/01/ford-sync-applink-ces.jpg</string>
     <string name="title_activity_number_memory">NumberMemory</string>
     <string name="title_activity_image_memory">ImageMemory</string>
+    <string name="title_activity_loading_screen">LoadingScreen</string>
 </resources>
