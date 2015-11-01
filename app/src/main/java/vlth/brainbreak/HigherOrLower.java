@@ -41,16 +41,27 @@ public class HigherOrLower extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // add toolbar
+        highScore = new HighScore(this);
+        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        score = (TextView) findViewById(R.id.point);
+        btH = (ImageButton) findViewById(R.id.btHigher);
+        btL = (ImageButton) findViewById(R.id.btLower);
+        num = (TextView) findViewById(R.id.number);
+        fab = (ImageButton) findViewById(R.id.fab);
+        progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
+        main_view = (LinearLayout) findViewById(R.id.layout_main);
+
+        // add toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Higher or Lower");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
         toolbarTitle.setTypeface(fonts);
+        num.setTypeface(fonts);
+        score.setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,19 +71,8 @@ public class HigherOrLower extends AppCompatActivity {
             }
         });
 
-        highScore = new HighScore(this);
-        score = (TextView) findViewById(R.id.point);
-        btH = (ImageButton) findViewById(R.id.btHigher);
-        btL = (ImageButton) findViewById(R.id.btLower);
-        num = (TextView) findViewById(R.id.number);
-        fab = (ImageButton) findViewById(R.id.fab);
-        progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
-        main_view = (LinearLayout) findViewById(R.id.layout_main);
 
-        //set font
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Sketch_Block.ttf");
-        num.setTypeface(font);
-        score.setTypeface(font);
+
 
 
         myTimer = new MyTimer(1500);
@@ -84,7 +84,7 @@ public class HigherOrLower extends AppCompatActivity {
             public void onClick(View v) {
                 main_view.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.GONE);
-                new CountDownTimer(1200, 1000) {
+                new CountDownTimer(1100, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         setRandomNumberLV1();
@@ -253,7 +253,10 @@ public class HigherOrLower extends AppCompatActivity {
             super.handleMessage(msg);
             Intent intent = getIntent();
             finish();
-            startActivity(intent);
+            if (msg.what == 0)
+                startActivity(intent);
+            if (msg.what == 1)
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     };
 

@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 //        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
 //            ...});
         setContentView(R.layout.activity_home);
-
+        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Brain Breaks");
-        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+
         toolbarTitle.setTypeface(font);
 
         btInvite = (Button) findViewById(R.id.btInvite);

@@ -3,10 +3,8 @@ package vlth.brainbreak;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,11 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParser;
 
 import java.util.Random;
 
@@ -41,7 +34,7 @@ public class MixWord extends AppCompatActivity {
     private int myScore = 0;
     private boolean finish = false;
 
-    private String correct_answer="";
+    private String correct_answer = "";
 
     private HighScore highScore;
     private ImageButton fab;
@@ -55,8 +48,9 @@ public class MixWord extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mix_word);
-
-        highScore=new HighScore(this);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        highScore = new HighScore(this);
         prototype();
         setRandomAnsser();
         myTimer = new MyTimer(2000);
@@ -72,15 +66,19 @@ public class MixWord extends AppCompatActivity {
         });
 
         // Them vao
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Higher or Lower");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setText("Mirror Word");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
         toolbarTitle.setTypeface(fonts);
+        txtQuestion.setTypeface(fonts);
+        txtScore.setTypeface(fonts);
+        btAnswer[0].setTypeface(fonts);
+        btAnswer[1].setTypeface(fonts);
+        btAnswer[2].setTypeface(fonts);
+        btAnswer[3].setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +101,7 @@ public class MixWord extends AppCompatActivity {
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         word_array = getResources().getStringArray(R.array.mix_word);
         fab = (ImageButton) findViewById(R.id.fab);
-        main_view=(LinearLayout)findViewById(R.id.main_layout);
+        main_view = (LinearLayout) findViewById(R.id.main_layout);
     }
 
 
@@ -119,23 +117,23 @@ public class MixWord extends AppCompatActivity {
         Random r = new Random();
         char[] ch = getRandomQuestion().toCharArray();
 
-        correct_answer="";
+        correct_answer = "";
         for (int i = ch.length - 1; i >= 0; i--) {
             correct_answer = correct_answer + ch[i];
         }
         int length = correct_answer.length();
 
-        StringBuilder sb1=new StringBuilder(correct_answer);
-        StringBuilder sb2=new StringBuilder(correct_answer);
-        StringBuilder sb3=new StringBuilder(correct_answer);
-        StringBuilder sb4=new StringBuilder(correct_answer);
+        StringBuilder sb1 = new StringBuilder(correct_answer);
+        StringBuilder sb2 = new StringBuilder(correct_answer);
+        StringBuilder sb3 = new StringBuilder(correct_answer);
+        StringBuilder sb4 = new StringBuilder(correct_answer);
 
         char c;
         for (int i = 0; i < length; i++) {
 
-            if(i%3==0){
-            c = (char) (r.nextInt(26) + 'a');
-            sb1.setCharAt(i,c);
+            if (i % 3 == 0) {
+                c = (char) (r.nextInt(26) + 'a');
+                sb1.setCharAt(i, c);
             }
 
         }
@@ -144,7 +142,7 @@ public class MixWord extends AppCompatActivity {
         for (int i = 0; i < length; i++) {
             if (i % 2 == 0) {
                 c = (char) (r.nextInt(26) + 'a');
-                sb2.setCharAt(i,c);
+                sb2.setCharAt(i, c);
             }
         }
         btAnswer[1].setText(sb2);
@@ -172,14 +170,14 @@ public class MixWord extends AppCompatActivity {
     }
 
     public void answerClick(View view) {
-        String ans=((Button)view).getText().toString();
-        if(ans.equals(correct_answer)){
-            Toast.makeText(this,"Dung",Toast.LENGTH_SHORT).show();
+        String ans = ((Button) view).getText().toString();
+        if (ans.equals(correct_answer)) {
             setRandomAnsser();
             myScore++;
+            txtScore.setText("" + myScore);
+            SoundUtil.play(this, SoundUtil.WIN);
             myTimer.tick();
-        }else {
-            Toast.makeText(this,"Sai",Toast.LENGTH_SHORT).show();
+        } else {
             gameLose.sendEmptyMessage(0);
         }
     }
@@ -188,16 +186,16 @@ public class MixWord extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (finish) {
-                return;
-            }
-            highScore.setScore(ID.NORMAL_SCORE_MIX_WORD,myScore);
+//            if (finish) {
+//                return;
+//            }
+            highScore.setScore(ID.NORMAL_SCORE_MIX_WORD, myScore);
             myScore = 0;
             SoundUtil.play(MixWord.this, SoundUtil.DIE);
             EndDialog endDialog = new EndDialog(MixWord.this, closeDialog);
             endDialog.show();
             myTimer.stop();
-            finish = true;
+//            finish = true;
         }
 
     };
@@ -208,7 +206,10 @@ public class MixWord extends AppCompatActivity {
             super.handleMessage(msg);
             Intent intent = getIntent();
             finish();
-            startActivity(intent);
+            if (msg.what == 0)
+                startActivity(intent);
+            if (msg.what == 1)
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     };
 

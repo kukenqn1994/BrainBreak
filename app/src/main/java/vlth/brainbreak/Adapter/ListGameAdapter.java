@@ -51,7 +51,7 @@ public class ListGameAdapter extends ArrayAdapter<ItemGame> {
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
-        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Oblivious.ttf");
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/baisau.TTF");
         holder.txtBestScore.setTypeface(font);
         holder.txtTitle.setTypeface(font);
         holder.txtBestScore.setText("Best score: " + rowItem.getBest_score());

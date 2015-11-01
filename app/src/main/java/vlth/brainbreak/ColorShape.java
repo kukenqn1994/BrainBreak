@@ -48,6 +48,7 @@ public class ColorShape extends AppCompatActivity {
     private LinearLayout mainView;
     private Toolbar toolbar;
     private TextView toolbarTitle;
+    private MyTimer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +74,10 @@ public class ColorShape extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Higher or Lower");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setText("Color Shape");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
         toolbarTitle.setTypeface(fonts);
+        timer = new MyTimer(1500);
         fabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +87,7 @@ public class ColorShape extends AppCompatActivity {
                 im1.setClickable(true);
                 im2.setClickable(true);
 
-                final MyTimer timer = new MyTimer(1500);
+
 
                 point.setText("");
                 play(timer, myScore);
@@ -252,7 +254,10 @@ public class ColorShape extends AppCompatActivity {
             super.handleMessage(msg);
             Intent intent = getIntent();
             finish();
-            startActivity(intent);
+            if (msg.what == 0)
+                startActivity(intent);
+            if (msg.what == 1)
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     };
 
@@ -543,7 +548,17 @@ public class ColorShape extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        finish();
+//        if (timer.timer != null) {
+//            timer.timer.cancel();
+//        }
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
+    }
+
+    protected void onDestroy() {
+        if (timer.timer != null) {
+            timer.timer.cancel();
+        }
+        super.onDestroy();
     }
 }

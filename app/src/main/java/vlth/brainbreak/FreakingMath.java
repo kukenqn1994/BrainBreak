@@ -40,6 +40,7 @@ public class FreakingMath extends AppCompatActivity {
     private Toolbar toolbar;
     private LinearLayout mainView;
     private TextView toolbarTitle;
+    private MyTimer mytimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +71,8 @@ public class FreakingMath extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
-        toolbarTitle.setText("Higher or Lower");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/Oblivious.ttf");
+        toolbarTitle.setText("Freaking Math");
+        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
         toolbarTitle.setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -81,7 +82,7 @@ public class FreakingMath extends AppCompatActivity {
                 finish();
             }
         });
-
+        mytimer = new MyTimer(1500);
         mainView = (LinearLayout) findViewById(R.id.FreakingMath);
         fabtn = (ImageButton) findViewById(R.id.fab);
         fabtn.setOnClickListener(new View.OnClickListener() {
@@ -91,9 +92,9 @@ public class FreakingMath extends AppCompatActivity {
                 fabtn.setVisibility(View.GONE);
 
                 pr = (NumberProgressBar) findViewById(R.id.proTimer);
-                final MyTimer mytimer = new MyTimer(1500);
+
                 tw.setText(Integer.toString(myScore));
-                play(mytimer, myScore);
+                play(myScore);
             }
         });
 
@@ -123,7 +124,7 @@ public class FreakingMath extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void play (final MyTimer mytimer, final int point) {
+    public void play (final int point) {
         int num1, num2, num3;
         num1 = random20();
         num2 = random20();
@@ -239,7 +240,7 @@ public class FreakingMath extends AppCompatActivity {
                     myScore = point + 1;
                     tw.setText(Integer.toString(myScore));
                     SoundUtil.play(FreakingMath.this, SoundUtil.WIN);
-                    play(mytimer, myScore);
+                    play(myScore);
                 } else {
                     gameLose.sendEmptyMessage(0);
                 }
@@ -253,7 +254,7 @@ public class FreakingMath extends AppCompatActivity {
                     myScore = point + 1;
                     tw.setText(Integer.toString(myScore));
                     SoundUtil.play(FreakingMath.this, SoundUtil.WIN);
-                    play(mytimer, myScore);
+                    play(myScore);
                 } else {
                     gameLose.sendEmptyMessage(0);
                 }
@@ -307,13 +308,27 @@ public class FreakingMath extends AppCompatActivity {
             super.handleMessage(msg);
             Intent intent = getIntent();
             finish();
-            startActivity(intent);
+            if (msg.what == 0)
+                startActivity(intent);
+            if (msg.what == 1)
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         }
     };
 
     @Override
     public void onBackPressed() {
-        finish();
+        if (mytimer.timer != null) {
+            mytimer.timer.cancel();
+        }
         startActivity(new Intent(this, HomeActivity.class));
+        finish();
+
+    }
+
+    protected void onDestroy() {
+        if (mytimer.timer != null) {
+            mytimer.timer.cancel();
+        }
+        super.onDestroy();
     }
 }

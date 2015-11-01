@@ -6,8 +6,8 @@
     android:minHeight="?attr/actionBarSize"
     android:background="#009688"
     android:elevation="4dp"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
 
     <!-- android:elevation="4dp" is used due to http://www.google.com/design/spec/what-is-material/elevation-shadows.html#elevation-shadows-elevation-android- -->
     <TextView
@@ -15,6 +15,8 @@
         android:layout_height="wrap_content"
         android:text="Toolbar Title"
         android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         android:id="@+id/toolbar_title" />
 </android.support.v7.widget.Toolbar>

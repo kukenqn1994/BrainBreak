@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Handler;
 import android.view.View;
@@ -17,8 +15,6 @@ import android.widget.TextView;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.share.widget.ShareDialog;
-import com.larvalabs.svgandroid.SVG;
-import com.larvalabs.svgandroid.SVGParser;
 
 import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
@@ -32,9 +28,11 @@ public class EndDialog extends Dialog {
     private TextView mTvYourMove, mTvYourBest;
     ImageButton share, replay, home;
     Context context;
+    private int mode = -1;
+
     public EndDialog(final Context context, final Handler handler) {
         super(context);
-        this.context=context;
+        this.context = context;
         // TODO Auto-generated constructor stub
         FacebookSdk.sdkInitialize(context.getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
@@ -56,20 +54,26 @@ public class EndDialog extends Dialog {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 // TODO Auto-generated method stub
-                handler.sendEmptyMessage(0);
+                if (mode == 0) {
+                    handler.sendEmptyMessage(0);
+                }
+                if (mode == 1)
+                    handler.sendEmptyMessage(1);
             }
         });
+
         replay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mode = 0;
                 EndDialog.this.dismiss();
             }
         });
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, HomeActivity.class));
-//                EndDialog.this.dismiss();
+                mode = 1;
+                EndDialog.this.dismiss();
             }
         });
 //        share.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +120,7 @@ public class EndDialog extends Dialog {
         mTvYourMove.setText("YOUR SCORE: " + current_score);
         mTvYourBest.setText("BEST SCORE: " + best_score);
     }
+
 
     public Bitmap takeScreenshot() {
         View rootView = findViewById(android.R.id.content).getRootView();
