@@ -15,7 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.share.Sharer;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
 
 import vlth.brainbreak.Util.HighScore;
@@ -23,22 +28,39 @@ import vlth.brainbreak.Util.ID;
 
 public class EndDialog extends Dialog {
 
-    private final ShareDialog shareDialog;
-    private final CallbackManager callbackManager;
+    private ShareDialog shareDialog;
+    private CallbackManager callbackManager;
     private int current_score = 0;
     private int best_score = 0;
     private TextView mTvYourMove, mTvYourBest,mTvTitle;
     ImageButton share, replay, home;
     Context context;
     private int mode = -1;
+    private Bitmap bmp;
 
     public EndDialog(final Context context, final Handler handler) {
         super(context);
         this.context = context;
-        // TODO Auto-generated constructor stub
+
         FacebookSdk.sdkInitialize(context.getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog((Activity) context);
+        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+            @Override
+            public void onSuccess(Sharer.Result result) {
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+
+            }
+        });
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
@@ -60,7 +82,7 @@ public class EndDialog extends Dialog {
         setOnDismissListener(new OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                // TODO Auto-generated method stub
+
                 if (mode == 0) {
                     handler.sendEmptyMessage(0);
                 }
@@ -83,18 +105,23 @@ public class EndDialog extends Dialog {
                 EndDialog.this.dismiss();
             }
         });
-//        share.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SharePhoto photo = new SharePhoto.Builder()
-//                        .setBitmap(takeScreenshot())
-//                        .build();
-//                SharePhotoContent content = new SharePhotoContent.Builder()
-//                        .addPhoto(photo)
-//                        .build();
-//                ShareDialog.show((Activity) context, content);
-//            }
-//        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(shareDialog.canShow(SharePhotoContent.class)) {
+                    Bitmap image = takeScreenshot();
+                    SharePhoto photo = new SharePhoto.Builder()
+                            .setBitmap(image)
+                            .build();
+                    SharePhotoContent content = new SharePhotoContent.Builder()
+                            .addPhoto(photo)
+                            .build();
+                    shareDialog.show(content);
+                }
+            }
+        });
 
         if (context instanceof HigherOrLower) {
             current_score = HighScore.getScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER, 0);

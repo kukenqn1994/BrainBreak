@@ -70,10 +70,6 @@ public class HigherOrLower extends AppCompatActivity {
             }
         });
 
-
-
-
-
         myTimer = new MyTimer(1500);
         myTimer.setID(progressBar);
         myTimer.setOnTickHtmlListener(gameLose);
@@ -268,6 +264,8 @@ public class HigherOrLower extends AppCompatActivity {
         finish();
 //        startActivity(new Intent(this, HomeActivity.class));
     }
+
+
 
     @Override
     protected void onDestroy() {
