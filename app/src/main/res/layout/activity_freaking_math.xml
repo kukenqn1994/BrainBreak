@@ -88,25 +88,25 @@
             android:layout_weight="1"
             android:layout_marginTop="10dip">
 
-            <Button
+            <ImageButton
                 android:layout_width="100dip"
                 android:layout_height="100dip"
                 android:id="@+id/btn1"
-                android:background="@drawable/btntrue"
-                android:textSize="@android:dimen/app_icon_size"
+                android:background="@drawable/bt_corner"
                 android:layout_weight="1"
                 android:soundEffectsEnabled="true"
+                android:src="@drawable/ic_tick"
                 />
 
-            <Button
+            <ImageButton
                 android:layout_width="100dip"
                 android:layout_height="100dip"
                 android:layout_marginLeft="25dip"
                 android:id="@+id/btn2"
-                android:background="@drawable/btnfalse"
-                android:textSize="@android:dimen/app_icon_size"
+                android:background="@drawable/bt_corner"
                 android:layout_weight="1"
                 android:soundEffectsEnabled="true"
+                android:src="@drawable/ic_x"
                 />
 
         </LinearLayout>

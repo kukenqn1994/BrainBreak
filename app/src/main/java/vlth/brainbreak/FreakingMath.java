@@ -26,7 +26,7 @@ import vlth.brainbreak.Util.SoundUtil;
 public class FreakingMath extends AppCompatActivity {
 
     private TextView bt1, bt2, bt3, res;
-    private Button ans1, ans2;
+    private ImageButton ans1, ans2;
     private TextView tw;
     private NumberProgressBar pr;
     String result;
@@ -50,8 +50,8 @@ public class FreakingMath extends AppCompatActivity {
         bt2 = (TextView) findViewById(R.id.num2);
         bt3 = (TextView) findViewById(R.id.math);
 
-        ans1 = (Button) findViewById(R.id.btn1);
-        ans2 = (Button) findViewById(R.id.btn2);
+        ans1 = (ImageButton) findViewById(R.id.btn1);
+        ans2 = (ImageButton) findViewById(R.id.btn2);
         res = (TextView) findViewById(R.id.ans);
 
         tw = (TextView) findViewById(R.id.point);
