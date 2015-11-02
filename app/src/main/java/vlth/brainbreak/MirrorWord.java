@@ -21,18 +21,16 @@ import vlth.brainbreak.Util.ID;
 import vlth.brainbreak.Util.MyTimer;
 import vlth.brainbreak.Util.SoundUtil;
 
-public class MixWord extends AppCompatActivity {
+public class MirrorWord extends AppCompatActivity {
 
     Button[] btAnswer;
     TextView txtQuestion, txtScore;
     NumberProgressBar progressBar;
     MyTimer myTimer;
 
-    String[] word_array;
+    String[] words_lv1;
     private int ca_position;
-    private String strQuestion;
     private int myScore = 0;
-    private boolean finish = false;
 
     private String correct_answer = "";
 
@@ -71,7 +69,7 @@ public class MixWord extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle.setText("Mirror Word");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
+        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbarTitle.setTypeface(fonts);
         txtQuestion.setTypeface(fonts);
         txtScore.setTypeface(fonts);
@@ -83,7 +81,7 @@ public class MixWord extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MixWord.this, HomeActivity.class));
+//                startActivity(new Intent(MirrorWord.this, HomeActivity.class));
                 finish();
             }
         });
@@ -99,7 +97,7 @@ public class MixWord extends AppCompatActivity {
         txtQuestion = (TextView) findViewById(R.id.text);
         txtScore = (TextView) findViewById(R.id.point);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
-        word_array = getResources().getStringArray(R.array.mix_word);
+        words_lv1 = getResources().getStringArray(R.array.words_lv1);
         fab = (ImageButton) findViewById(R.id.fab);
         main_view = (LinearLayout) findViewById(R.id.main_layout);
     }
@@ -107,8 +105,8 @@ public class MixWord extends AppCompatActivity {
 
     private String getRandomQuestion() {
         Random r = new Random();
-        int index = word_array.length;
-        txtQuestion.setText(word_array[r.nextInt(index)]);
+        int index = words_lv1.length;
+        txtQuestion.setText(words_lv1[r.nextInt(index)]);
         return txtQuestion.getText().toString();
     }
 
@@ -186,18 +184,17 @@ public class MixWord extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-//            if (finish) {
-//                return;
-//            }
+            btAnswer[0].setEnabled(false);
+            btAnswer[1].setEnabled(false);
+            btAnswer[2].setEnabled(false);
+            btAnswer[3].setEnabled(false);
+            myTimer.stop();
             highScore.setScore(ID.NORMAL_SCORE_MIX_WORD, myScore);
             myScore = 0;
-            SoundUtil.play(MixWord.this, SoundUtil.DIE);
-            EndDialog endDialog = new EndDialog(MixWord.this, closeDialog);
+            SoundUtil.play(MirrorWord.this, SoundUtil.DIE);
+            EndDialog endDialog = new EndDialog(MirrorWord.this, closeDialog);
             endDialog.show();
-            myTimer.stop();
-//            finish = true;
         }
-
     };
 
     private Handler closeDialog = new Handler() {
@@ -209,7 +206,7 @@ public class MixWord extends AppCompatActivity {
             if (msg.what == 0)
                 startActivity(intent);
             if (msg.what == 1)
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
         }
     };
 
@@ -219,7 +216,7 @@ public class MixWord extends AppCompatActivity {
             myTimer.timer.cancel();
         }
         finish();
-        startActivity(new Intent(this, HomeActivity.class));
+//        startActivity(new Intent(this, HomeActivity.class));
     }
 
     protected void onDestroy() {

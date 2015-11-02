@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -72,13 +70,13 @@ public class FreakingMath extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Freaking Math");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
+        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbarTitle.setTypeface(fonts);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
+//                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
                 finish();
             }
         });
@@ -311,7 +309,7 @@ public class FreakingMath extends AppCompatActivity {
             if (msg.what == 0)
                 startActivity(intent);
             if (msg.what == 1)
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
         }
     };
 
@@ -320,7 +318,7 @@ public class FreakingMath extends AppCompatActivity {
         if (mytimer.timer != null) {
             mytimer.timer.cancel();
         }
-        startActivity(new Intent(this, HomeActivity.class));
+//        startActivity(new Intent(this, HomeActivity.class));
         finish();
 
     }

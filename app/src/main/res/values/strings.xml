@@ -4,7 +4,7 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="mix_word">
+    <string-array name="words_lv1">
         <item>action</item>
         <item>animal</item>
         <item>apple</item>
@@ -16,6 +16,8 @@
         <item>clean</item>
         <item>cheese</item>
     </string-array>
+
+
     <string name="title_activity_freaking_math">FreakingMath</string>
 
     <string name="hello_world">Hello world!</string>

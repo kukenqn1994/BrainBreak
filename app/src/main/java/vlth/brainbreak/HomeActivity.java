@@ -19,15 +19,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.internal.WebDialog;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.widget.AppInviteDialog;
 import com.facebook.share.widget.ShareDialog;
@@ -39,7 +34,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import bolts.AppLink;
 import bolts.AppLinks;
 import vlth.brainbreak.Adapter.ListGameAdapter;
 import vlth.brainbreak.Model.ItemGame;
@@ -47,13 +41,17 @@ import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
 
 public class HomeActivity extends AppCompatActivity {
-    public static final String[] titles = new String[]{"Higer or Lower",
-            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
 
-    public static int[] icon = {R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
+    //Games infomation
+    private String[] titles = new String[]{"Higer or Lower",
+            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
+    private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
+    private String[] tut= new String[]{"1","2","3","4","5"};
+
+
+
     ListView listView;
     List<ItemGame> rowItems;
-    private HighScore highScore;
     private Button btInvite, btLogin;
     private WebDialog dialog = null;
     private String dialogAction = null;
@@ -81,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
 //        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
 //            ...});
         setContentView(R.layout.activity_home);
-        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
+        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -133,22 +131,22 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-        highScore = new HighScore(this);
-//
-        int[] best_score = {highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
+        HighScore highScore = new HighScore(this);
+        int[] best_score = {
+                highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
                 highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
                 highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
                 highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0),
                 highScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0)};
 
+
         rowItems = new ArrayList<ItemGame>();
         for (int i = 0; i < titles.length; i++) {
-            ItemGame item = new ItemGame(titles[i], best_score[i]);
+            ItemGame item = new ItemGame(titles[i], best_score[i],tut[i], cover[i]);
             rowItems.add(item);
         }
         listView = (ListView) findViewById(R.id.list_game);
-        ListGameAdapter adapter = new ListGameAdapter(this, R.layout.game_row, rowItems, icon);
+        ListGameAdapter adapter = new ListGameAdapter(this, R.layout.game_row, rowItems);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -157,19 +155,19 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(HomeActivity.this, HigherOrLower.class));
-                        finish();
+
                         break;
                     case 1:
-                        startActivity(new Intent(HomeActivity.this, MixWord.class));
-                        finish();
+                        startActivity(new Intent(HomeActivity.this, MirrorWord.class));
+
                         break;
                     case 2:
                         startActivity(new Intent(HomeActivity.this, FreakingMath.class));
-                        finish();
+
                         break;
                     case 3:
                         startActivity(new Intent(HomeActivity.this, ColorShape.class));
-                        finish();
+
                         break;
                     case 4:
                         startActivity(new Intent(HomeActivity.this, ImageMemory.class));

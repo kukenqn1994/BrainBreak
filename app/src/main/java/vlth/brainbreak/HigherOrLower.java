@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -58,7 +57,7 @@ public class HigherOrLower extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle.setText("Higher or Lower");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
+        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbarTitle.setTypeface(fonts);
         num.setTypeface(fonts);
         score.setTypeface(fonts);
@@ -66,7 +65,7 @@ public class HigherOrLower extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HigherOrLower.this, HomeActivity.class));
+//                startActivity(new Intent(HigherOrLower.this, HomeActivity.class));
                 finish();
             }
         });
@@ -84,7 +83,7 @@ public class HigherOrLower extends AppCompatActivity {
             public void onClick(View v) {
                 main_view.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.GONE);
-                new CountDownTimer(1100, 1000) {
+                new CountDownTimer(800, 500) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         setRandomNumberLV1();
@@ -110,7 +109,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV1() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(100);
+        ranNum = r.nextInt(90)+10;
         if (temp == ranNum) {
             setRandomNumberLV1();
         }
@@ -128,7 +127,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV3() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(900)+100;
+        ranNum = r.nextInt(700)+200;
         if (temp == ranNum) {
             setRandomNumberLV3();
         }
@@ -137,7 +136,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV4() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(4000)+1000;
+        ranNum = r.nextInt(2000)+1000;
         if (temp == ranNum) {
             setRandomNumberLV4();
         }
@@ -146,7 +145,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV5() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(9000)+1000;
+        ranNum = r.nextInt(4000)+1500;
         if (temp == ranNum) {
             setRandomNumberLV5();
         }
@@ -155,7 +154,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV6() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(5000)+10000;
+        ranNum = r.nextInt(6000)+2000;
         if (temp == ranNum) {
             setRandomNumberLV6();
         }
@@ -164,7 +163,7 @@ public class HigherOrLower extends AppCompatActivity {
     private void setRandomNumberLV7() {
         Random r = new Random();
         temp = ranNum;
-        ranNum = r.nextInt(10000)+10000;
+        ranNum = r.nextInt(8000)+2000;
         if (temp == ranNum) {
             setRandomNumberLV7();
         }
@@ -234,15 +233,16 @@ public class HigherOrLower extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (finish) {
-                return;
-            }
+            btL.setEnabled(false);
+            btH.setEnabled(false);
+            // stop progress bar
+            myTimer.stop();
             highScore.setScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER, myScore);
             myScore = 0;
             SoundUtil.play(HigherOrLower.this, SoundUtil.DIE);
             EndDialog endDialog = new EndDialog(HigherOrLower.this, closeDialog);
             endDialog.show();
-            myTimer.stop();
+
             finish = true;
         }
 
@@ -256,7 +256,7 @@ public class HigherOrLower extends AppCompatActivity {
             if (msg.what == 0)
                 startActivity(intent);
             if (msg.what == 1)
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
         }
     };
 
@@ -266,7 +266,7 @@ public class HigherOrLower extends AppCompatActivity {
             myTimer.timer.cancel();
         }
         finish();
-        startActivity(new Intent(this, HomeActivity.class));
+//        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override

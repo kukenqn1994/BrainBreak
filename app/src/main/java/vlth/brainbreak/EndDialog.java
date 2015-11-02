@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -25,7 +27,7 @@ public class EndDialog extends Dialog {
     private final CallbackManager callbackManager;
     private int current_score = 0;
     private int best_score = 0;
-    private TextView mTvYourMove, mTvYourBest;
+    private TextView mTvYourMove, mTvYourBest,mTvTitle;
     ImageButton share, replay, home;
     Context context;
     private int mode = -1;
@@ -40,11 +42,16 @@ public class EndDialog extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Comic.ttf");
 
         LinearLayout layout = (LinearLayout) this.findViewById(R.id.root);
 
         mTvYourMove = (TextView) this.findViewById(R.id.yourMove);
         mTvYourBest = (TextView) this.findViewById(R.id.yourBest);
+        mTvTitle=(TextView)this.findViewById(R.id.gameOver);
+        mTvYourBest.setTypeface(font);
+        mTvYourMove.setTypeface(font);
+        mTvTitle.setTypeface(font);
 
         share = (ImageButton) findViewById(R.id.btShare);
         home = (ImageButton) findViewById(R.id.btHome);
@@ -96,7 +103,7 @@ public class EndDialog extends Dialog {
                 HighScore.setScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, current_score);
             }
         }
-        if (context instanceof MixWord) {
+        if (context instanceof MirrorWord) {
             current_score = HighScore.getScore(ID.NORMAL_SCORE_MIX_WORD, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0);
             if (current_score > best_score) {
@@ -122,11 +129,24 @@ public class EndDialog extends Dialog {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mode = 1;
+        EndDialog.this.dismiss();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return false;
+    }
+
     public Bitmap takeScreenshot() {
         View rootView = findViewById(android.R.id.content).getRootView();
         rootView.setDrawingCacheEnabled(true);
         return rootView.getDrawingCache();
     }
+
 //
 //    public static void store(Bitmap bm, String fileName){
 //        final String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";

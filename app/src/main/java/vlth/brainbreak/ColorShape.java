@@ -3,7 +3,6 @@ package vlth.brainbreak;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -75,7 +74,7 @@ public class ColorShape extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Color Shape");
-        Typeface fonts = Typeface.createFromAsset(this.getAssets(), "fonts/baisau.TTF");
+        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbarTitle.setTypeface(fonts);
         timer = new MyTimer(1500);
         fabtn.setOnClickListener(new View.OnClickListener() {
@@ -87,8 +86,6 @@ public class ColorShape extends AppCompatActivity {
                 im1.setClickable(true);
                 im2.setClickable(true);
 
-
-
                 point.setText("");
                 play(timer, myScore);
             }
@@ -99,7 +96,7 @@ public class ColorShape extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ColorShape.this, HomeActivity.class));
+//                startActivity(new Intent(ColorShape.this, HomeActivity.class));
                 finish();
             }
         });
@@ -548,10 +545,10 @@ public class ColorShape extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        if (timer.timer != null) {
-//            timer.timer.cancel();
-//        }
-        startActivity(new Intent(this, HomeActivity.class));
+        if (timer.timer != null) {
+            timer.timer.cancel();
+        }
+//        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
 

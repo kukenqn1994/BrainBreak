@@ -17,46 +17,45 @@ import vlth.brainbreak.R;
 public class ListGameAdapter extends ArrayAdapter<ItemGame> {
 
     Context context;
-    int[] imgId;
 
     public ListGameAdapter(Context context, int resourceId,
-                                 List<ItemGame> items, int[] values) {
+                                 List<ItemGame> items) {
         super(context, resourceId, items);
         this.context = context;
-        imgId = values;
     }
 
     /*private view holder class*/
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;
-        TextView txtDesc;
+        TextView txtTutorial;
         TextView txtBestScore;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         ItemGame rowItem = getItem(position);
-        int img = imgId[position];
 
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.game_row, null);
             holder = new ViewHolder();
-//            holder.txtDesc = (TextView) convertView.findViewById(R.id.desc);
+            holder.txtTutorial = (TextView) convertView.findViewById(R.id.desc);
             holder.txtTitle = (TextView) convertView.findViewById(R.id.title);
             holder.txtBestScore = (TextView) convertView.findViewById(R.id.best_score);
             holder.imageView = (ImageView) convertView.findViewById(R.id.list_image);
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
-        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/baisau.TTF");
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Comic.ttf");
         holder.txtBestScore.setTypeface(font);
         holder.txtTitle.setTypeface(font);
+
         holder.txtBestScore.setText("Best score: " + rowItem.getBest_score());
         holder.txtTitle.setText(rowItem.getTitle());
-        holder.imageView.setImageResource(img);
+        holder.txtTutorial.setText(rowItem.getTutorial());
+        holder.imageView.setImageResource(rowItem.getCover());
 
         return convertView;
     }

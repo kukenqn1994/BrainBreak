@@ -36,13 +36,12 @@ public class MyTimer extends Activity {
         if (timer != null) {
             timer.cancel();
         }
-        timer = new CountDownTimer(miliSecond, 10) {
+        timer = new CountDownTimer(miliSecond, 1) {
             @Override
             public void onTick(long millisUntilFinished) {
                 // TODO Auto-generated method stub
                 progressBar.setProgress((int) millisUntilFinished);
             }
-
             @Override
             public void onFinish() {
                 handler.sendEmptyMessage(0);

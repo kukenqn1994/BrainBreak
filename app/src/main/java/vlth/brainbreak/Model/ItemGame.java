@@ -6,9 +6,13 @@ package vlth.brainbreak.Model;
 public class ItemGame {
     public String title;
     public int best_score;
-    public ItemGame(String title,int best_score){
+    public String tutorial;
+    public int cover;
+    public ItemGame(String title,int best_score,String tutorial, int cover){
         this.title=title;
         this.best_score=best_score;
+        this.tutorial=tutorial;
+        this.cover=cover;
     }
 
     public int getBest_score() {
@@ -19,4 +23,11 @@ public class ItemGame {
         return title;
     }
 
+    public int getCover() {
+        return cover;
+    }
+
+    public String getTutorial() {
+        return tutorial;
+    }
 }

@@ -21,7 +21,7 @@ public class LoadingScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_screen);
 
-        timer =new CountDownTimer(1500,100) {
+        timer =new CountDownTimer(700,100) {
             @Override
             public void onTick(long millisUntilFinished) {
             }

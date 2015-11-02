@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import vlth.brainbreak.ColorShape;
 import vlth.brainbreak.FreakingMath;
 import vlth.brainbreak.HigherOrLower;
-import vlth.brainbreak.MixWord;
+import vlth.brainbreak.MirrorWord;
 
 /**
  * Created by Administrator on 10/21/2015.
@@ -21,7 +21,7 @@ public class HighScore {
     }
 
     public static void setScore(String key, int val) {
-        if (context instanceof MixWord) {
+        if (context instanceof MirrorWord) {
             preferences = context.getSharedPreferences(ID.GAME, 0);
         }
         if (context instanceof HigherOrLower) {
