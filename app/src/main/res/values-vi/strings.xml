@@ -18,14 +18,14 @@
     </string-array>
 
     <string-array name="cs">
-        <item>Color</item>
-        <item>Shape</item>
+        <item>Màu</item>
+        <item>Hình</item>
     </string-array>
 
     <string-array name="shape">
-        <item>Square</item>
-        <item>Triangle</item>
-        <item>Circle</item>
+        <item>Hình vuông</item>
+        <item>Tam giác</item>
+        <item>Hình tròn</item>
     </string-array>
 
 

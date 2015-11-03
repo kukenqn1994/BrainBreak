@@ -36,6 +36,9 @@ public class ColorShape extends AppCompatActivity {
     public static int[] tri = {R.drawable.triangle_green, R.drawable.triangle_yellow, R.drawable.triangle_red};
     public static int[] cir = {R.drawable.circle_green, R.drawable.circle_yellow, R.drawable.circle_red};
 
+    String[] type;
+    String[] shape;
+
     String choose1, choose2, result;
     int rd;
 
@@ -63,6 +66,9 @@ public class ColorShape extends AppCompatActivity {
         im2 = (ImageView) findViewById(R.id.im2);
 
         point = (TextView) findViewById(R.id.point);
+
+        type = getResources().getStringArray(R.array.cs);
+        shape = getResources().getStringArray(R.array.shape);
 
         // Them vao
         fabtn = (ImageButton) findViewById(R.id.fab);
@@ -148,7 +154,7 @@ public class ColorShape extends AppCompatActivity {
         }
 
         if (num1 % 2 == 0) {
-            tw1.setText("Color: ");
+            tw1.setText(type[0] + " :");
             switch (num3) {
                 case 0:
                     result = "green";
@@ -161,7 +167,7 @@ public class ColorShape extends AppCompatActivity {
                     break;
             }
         } else {
-            tw1.setText("Shape: ");
+            tw1.setText(type[1] + " :");
             switch (num2) {
                 case 0:
                     result = "square";
@@ -288,7 +294,7 @@ public class ColorShape extends AppCompatActivity {
 
         switch (num2) {
             case 0:
-                tw2.setText("Square");
+                tw2.setText(shape[0]);
                 type = sqr[random()];
 
                 switch (num3) {
@@ -330,7 +336,7 @@ public class ColorShape extends AppCompatActivity {
                 }
                 break;
             case 1:
-                tw2.setText("Triangle");
+                tw2.setText(shape[1]);
                 type = tri[random()];
 
                 switch (num3) {
@@ -372,7 +378,7 @@ public class ColorShape extends AppCompatActivity {
                 }
                 break;
             case 2:
-                tw2.setText("Circle");
+                tw2.setText(shape[2]);
                 type = cir[random()];
 
                 switch (num3) {
