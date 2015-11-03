@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -18,10 +19,15 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.share.ShareApi;
 import com.facebook.share.Sharer;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
+
+import java.util.Arrays;
+import java.util.List;
 
 import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
@@ -45,6 +51,7 @@ public class EndDialog extends Dialog {
         FacebookSdk.sdkInitialize(context.getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog((Activity) context);
+
         shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
             @Override
             public void onSuccess(Sharer.Result result) {
@@ -109,16 +116,14 @@ public class EndDialog extends Dialog {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(shareDialog.canShow(SharePhotoContent.class)) {
-                    Bitmap image = takeScreenshot();
+                if (ShareDialog.canShow(SharePhotoContent.class)) {
                     SharePhoto photo = new SharePhoto.Builder()
-                            .setBitmap(image)
+                            .setBitmap(takeScreenshot())
                             .build();
                     SharePhotoContent content = new SharePhotoContent.Builder()
                             .addPhoto(photo)
                             .build();
-                    shareDialog.show(content);
+                    ShareDialog.show((Activity) context, content);
                 }
             }
         });
@@ -154,6 +159,7 @@ public class EndDialog extends Dialog {
         mTvYourMove.setText("YOUR SCORE: " + current_score);
         mTvYourBest.setText("BEST SCORE: " + best_score);
     }
+
 
 
     @Override
@@ -203,3 +209,4 @@ public class EndDialog extends Dialog {
 //        getOwnerActivity().startActivity(Intent.createChooser(intent, "Share Screenshot"));
 //    }
 }
+
