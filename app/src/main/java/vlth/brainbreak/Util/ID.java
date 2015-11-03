@@ -15,4 +15,6 @@ public class ID {
     public static String HIGH_SCORE_COLOR_SHAPE = "hs_cs";
     public static String NORMAL_SCORE_FIND_IMAGE = "ns_fi";
     public static String HIGH_SCORE_FIND_IMAGE = "hs_fi";
+    public static String NORMAL_SCORE_NUMBER = "ns_n";
+    public static String HIGH_SCORE_NUMBER = "hs_n";
 }

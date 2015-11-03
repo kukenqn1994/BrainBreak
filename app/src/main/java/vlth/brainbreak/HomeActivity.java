@@ -1,40 +1,16 @@
 package vlth.brainbreak;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
-import com.facebook.internal.WebDialog;
-import com.facebook.share.model.AppInviteContent;
-import com.facebook.share.widget.AppInviteDialog;
-import com.facebook.share.widget.ShareDialog;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import bolts.AppLinks;
 import vlth.brainbreak.Adapter.ListGameAdapter;
 import vlth.brainbreak.Model.ItemGame;
 import vlth.brainbreak.Util.HighScore;
@@ -44,38 +20,18 @@ public class HomeActivity extends AppCompatActivity {
 
     //Games infomation
     private String[] titles = new String[]{"Higer or Lower",
-            "Mix Word", "Freaking Math", "Color or Shape", "Find Image"};
-    private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find};
-    private String[] tut= new String[]{"1","2","3","4","5"};
+            "Mix Word", "Freaking Math", "Color or Shape", "Find Image", "Number"};
+    private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find, R.drawable.number};
+    private String[] tut= new String[]{"1","2","3","4","5", "6"};
 
     ListView listView;
-    List<ItemGame> rowItems;
-    private Button btInvite, btLogin;
-    private WebDialog dialog = null;
-    private String dialogAction = null;
-    private Bundle dialogParams = null;
-    private CallbackManager callbackManager;
-    private ShareDialog shareDialog;
-    LinearLayout ll;
-    private Bitmap myBitmap;
-    //private LoginButton loginButton;
-    private final String appLink= "https://fb.me/928178163884252";
-    private final String imageLink = "http://ford-life.com/wp-content/uploads/2013/01/ford-sync-applink-ces.jpg";
+    ArrayList<ItemGame> rowItems;
     private Toolbar toolbar;
-    private TextView toolbarTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        Uri targetUrl = AppLinks.getTargetUrlFromInboundIntent(HomeActivity.this, getIntent());
-        if (targetUrl != null) {
-            Log.i("Activity", "App Link Target URL: " + targetUrl.toString());
-        }
-        callbackManager = CallbackManager.Factory.create();
-        shareDialog = new ShareDialog(this);
-        // this part is optional
-//        shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
-//            ...});
+
         setContentView(R.layout.activity_home);
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -83,13 +39,11 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
+        TextView toolbarTitle;
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Brain Breaks");
 
         toolbarTitle.setTypeface(font);
-
-        btInvite = (Button) findViewById(R.id.btInvite);
-        btLogin = (Button) findViewById(R.id.btLogin);
 
         HighScore highScore = new HighScore(this);
         int[] best_score = {
@@ -97,10 +51,11 @@ public class HomeActivity extends AppCompatActivity {
                 highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
                 highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
                 highScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0),
-                highScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0)};
+                highScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0),
+                highScore.getScore(ID.HIGH_SCORE_NUMBER, 0)};
 
 
-        rowItems = new ArrayList<ItemGame>();
+        rowItems = new ArrayList<>();
         for (int i = 0; i < titles.length; i++) {
             ItemGame item = new ItemGame(titles[i], best_score[i],tut[i], cover[i]);
             rowItems.add(item);
@@ -131,92 +86,17 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 4:
                         startActivity(new Intent(HomeActivity.this, ImageMemory.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(HomeActivity.this, NumberMemory.class));
                 }
             }
         });
-//        ll = (LinearLayout) findViewById(R.id.home_layout);
-//        ll.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                myBitmap = captureScreen(ll);
-//                Toast.makeText(getApplicationContext(), "Screenshot captured..!", Toast.LENGTH_LONG).show();
-//                try {
-//
-//                    if (myBitmap != null) {
-//                        //save image to SD card
-//                        saveImage(myBitmap);
-//                        Toast.makeText(getApplicationContext(), "Screenshot saved..!", Toast.LENGTH_LONG).show();
-//                    }
-//
-//                } catch (IOException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-/*        loginButton=(LoginButton)findViewById(R.id.btLogin);
-
-        loginButton.setReadPermissions("user_friends","public_profile");
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>()
-
-                {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        Toast.makeText(HomeActivity.this, loginResult.getAccessToken().getUserId(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(HomeActivity.this, "Cancel login", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(FacebookException e) {
-                        Toast.makeText(HomeActivity.this, "Error", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-        );
-*/
-        btLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (AppInviteDialog.canShow()) {
-                    AppInviteContent content = new AppInviteContent.Builder()
-                            .setApplinkUrl(appLink)
-                            .setPreviewImageUrl(imageLink)
-                            .build();
-                    AppInviteDialog.show(HomeActivity.this, content);
-                }
-            }
-        });
-
-    }
-
-    public Bitmap captureScreen(View v) {
-        Display display = ((WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        int width = display.getWidth();
-        int height = display.getHeight();
-        Bitmap screenshot = null;
-        try {
-            if (v != null) {
-
-                screenshot = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                Canvas canvas = new Canvas(screenshot);
-                v.draw(canvas);
-            }
-
-        } catch (Exception e) {
-            Log.d("ScreenShotActivity", "Failed to capture screenshot because:" + e.getMessage());
-        }
-
-        return screenshot;
     }
 
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 }

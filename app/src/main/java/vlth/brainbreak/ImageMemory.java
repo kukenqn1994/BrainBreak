@@ -1,16 +1,12 @@
 package vlth.brainbreak;
 
-import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -18,28 +14,28 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.LinkedBlockingDeque;
-
-import vlth.brainbreak.R;
 
 public class ImageMemory extends AppCompatActivity {
 
-    private TextView request;
+    private TextView requestView;
+    private String request;
     private Toolbar toolbar;
-    private TextView toolsbarTitle;
+
     private ArrayList<Integer> listImage;
     private ArrayList<ImageView> listView;
     private ImageView imgView1, imgView2, imgView3, imgView4;
     private Random r;
     LinearLayout mainView;
     private ImageButton fab;
+    private TextView info, info1, info2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_memory);
-        request = (TextView) findViewById(R.id.request);
+        requestView = (TextView) findViewById(R.id.request);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        TextView toolsbarTitle;
         toolsbarTitle = (TextView) findViewById(R.id.toolbar_title);
         imgView1 = (ImageView) findViewById(R.id.Img1);
         imgView2 = (ImageView) findViewById(R.id.Img2);
@@ -66,7 +62,6 @@ public class ImageMemory extends AppCompatActivity {
         toolsbarTitle.setText("Find Image");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolsbarTitle.setTypeface(fonts);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,10 +70,24 @@ public class ImageMemory extends AppCompatActivity {
             }
         });
 
+        // Set info
+        info = (TextView) findViewById(R.id.info);
+        info1 = (TextView) findViewById(R.id.info1);
+        info2 = (TextView) findViewById(R.id.info2);
+        info.setTypeface(fonts);
+        info1.setTypeface(fonts);
+        info2.setTypeface(fonts);
+
+        info1.setText(R.string.info_fi1);
+        info2.setText(R.string.info_fi2);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fab.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                info1.setVisibility(View.GONE);
+                info2.setVisibility(View.GONE);
                 mainView.setVisibility(View.VISIBLE);
             }
         });
@@ -86,10 +95,8 @@ public class ImageMemory extends AppCompatActivity {
     }
 
     private void setResRandom() {
-        Log.d("TAG", "onSetRandom");
         int n;
         for (int i = 3; i >= 0; i --) {
-            Log.d("TAG", "sgse");
             n = r.nextInt(i + 1);
             listView.get(i).setImageResource(listImage.get(n));
             listImage.remove(n);
@@ -116,5 +123,9 @@ public class ImageMemory extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
     }
 }

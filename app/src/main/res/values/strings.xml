@@ -69,5 +69,11 @@ cs1    <string name="app_name">Brain Breaks</string>
     <string name="info_cs2">
         - Reach the highest score and share with your friends.
     </string>
+    <string name="info_fi1">
+        Read the request and tap the true image.
+    </string>
+    <string name="info_fi2">
+        Reach the highest score and share with your friends.
+    </string>
 
 </resources>

@@ -12,11 +12,6 @@
         layout="@layout/tool_bar">
     </include>
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/list_game"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="0.9"/>-->
     <ListView
         android:id="@+id/list_game"
         android:layout_width="match_parent"
@@ -29,35 +24,5 @@
         android:cacheColorHint="@android:color/transparent"
         android:headerDividersEnabled="true"
         android:footerDividersEnabled="true"
-        android:layout_weight="0.9"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:weightSum="1"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btLogin"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
-            android:layout_gravity="center"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            android:background="#3b5998"
-            android:text="Test Invite"/>
-        <Button
-            android:id="@+id/btInvite"
-            android:layout_marginLeft="4dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:background="#3b5998"
-            android:text="Invite Your Friend"
-            android:layout_weight="0.5"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textStyle="bold"/>
-    </LinearLayout>
+        android:layout_weight="1"/>
 </LinearLayout>
