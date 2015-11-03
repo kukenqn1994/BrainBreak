@@ -32,6 +32,8 @@ public class MirrorWord extends AppCompatActivity {
     private int ca_position;
     private int myScore = 0;
 
+    private TextView info, info1, info2;
+
     private String correct_answer = "";
 
     private HighScore highScore;
@@ -46,6 +48,8 @@ public class MirrorWord extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mix_word);
+        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
+
         toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         highScore = new HighScore(this);
@@ -58,10 +62,25 @@ public class MirrorWord extends AppCompatActivity {
             public void onClick(View v) {
                 main_view.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                info1.setVisibility(View.GONE);
+                info2.setVisibility(View.GONE);
+
                 myTimer.tick();
                 myTimer.setOnTickHtmlListener(gameLose);
             }
         });
+
+
+        info = (TextView) findViewById(R.id.info);
+        info1 = (TextView) findViewById(R.id.info1);
+        info2 = (TextView) findViewById(R.id.info2);
+        info.setTypeface(fonts);
+        info1.setTypeface(fonts);
+        info2.setTypeface(fonts);
+
+        info1.setText(R.string.info_mw1);
+        info2.setText(R.string.info_mw2);
 
         // Them vao
         setSupportActionBar(toolbar);
@@ -69,7 +88,6 @@ public class MirrorWord extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle.setText("Mirror Word");
-        Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
         toolbarTitle.setTypeface(fonts);
         txtQuestion.setTypeface(fonts);
         txtScore.setTypeface(fonts);

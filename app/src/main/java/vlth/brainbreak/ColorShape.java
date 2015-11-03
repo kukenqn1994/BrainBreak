@@ -31,6 +31,7 @@ public class ColorShape extends AppCompatActivity {
     private TextView tw1, tw2;
     private TextView point;
     private ImageView im1, im2;
+    private TextView info, info1, info2;
 
     public static int[] sqr = {R.drawable.square_green, R.drawable.square_yellow, R.drawable.square_red};
     public static int[] tri = {R.drawable.triangle_green, R.drawable.triangle_yellow, R.drawable.triangle_red};
@@ -88,6 +89,9 @@ public class ColorShape extends AppCompatActivity {
             public void onClick(View v) {
                 mainView.setVisibility(View.VISIBLE);
                 fabtn.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                info1.setVisibility(View.GONE);
+                info2.setVisibility(View.GONE);
 
                 im1.setClickable(true);
                 im2.setClickable(true);
@@ -98,6 +102,15 @@ public class ColorShape extends AppCompatActivity {
         });
 
 
+        info = (TextView) findViewById(R.id.info);
+        info1 = (TextView) findViewById(R.id.info1);
+        info2 = (TextView) findViewById(R.id.info2);
+        info.setTypeface(fonts);
+        info1.setTypeface(fonts);
+        info2.setTypeface(fonts);
+
+        info1.setText(R.string.info_cs1);
+        info2.setText(R.string.info_cs2);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

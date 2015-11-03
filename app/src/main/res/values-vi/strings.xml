@@ -41,4 +41,34 @@
     <string name="title_activity_number_memory">NumberMemory</string>
     <string name="title_activity_image_memory">ImageMemory</string>
     <string name="title_activity_loading_screen">LoadingScreen</string>
+
+
+    <string name="info_fm1">
+        - Trả ời nhanh các phép toán trong vòng 1.5 giây.
+    </string>
+    <string name="info_fm2">
+        - Đạt điểm thật cao và thi tài với bạn bè.
+    </string>
+
+    <string name="info_hl1">
+        - Chọn mũi tên lên/xuống nếu bạn thấy số tiếp theo lớn hơn/nhỏ hơn số trước.
+    </string>
+    <string name="info_hl2">
+        - Đạt điểm thật cao và thi tài với bạn bè.
+    </string>
+
+    <string name="info_mw1">
+        - Dựa trên từ cho trước, nhìn thật nhanh đáp án và tìm đáp án có các ký tự của từ cho trước.
+    </string>
+    <string name="info_mw2">
+        - Đạt điểm thật cao và thi tài với bạn bè.
+    </string>
+
+    <string name="info_cs1">
+        - Dựa vào từ khóa: Hình - Màu để chọn hình đúng cho từ khóa phía sau.
+    </string>
+    <string name="info_cs2">
+        - Đạt điểm thật cao và thi tài với bạn bè.
+    </string>
 </resources>
+

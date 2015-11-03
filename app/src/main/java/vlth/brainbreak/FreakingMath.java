@@ -26,6 +26,7 @@ import vlth.brainbreak.Util.SoundUtil;
 public class FreakingMath extends AppCompatActivity {
 
     private TextView bt1, bt2, bt3, res;
+    private TextView info, info1, info2;
     private ImageButton ans1, ans2;
     private TextView tw;
     private NumberProgressBar pr;
@@ -88,6 +89,9 @@ public class FreakingMath extends AppCompatActivity {
             public void onClick(View v) {
                 mainView.setVisibility(View.VISIBLE);
                 fabtn.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                info1.setVisibility(View.GONE);
+                info2.setVisibility(View.GONE);
 
                 pr = (NumberProgressBar) findViewById(R.id.proTimer);
 
@@ -96,6 +100,15 @@ public class FreakingMath extends AppCompatActivity {
             }
         });
 
+        info = (TextView) findViewById(R.id.info);
+        info1 = (TextView) findViewById(R.id.info1);
+        info2 = (TextView) findViewById(R.id.info2);
+        info.setTypeface(fonts);
+        info1.setTypeface(fonts);
+        info2.setTypeface(fonts);
+
+        info1.setText(R.string.info_fm1);
+        info2.setText(R.string.info_fm2);
     }
 
 
@@ -300,6 +313,7 @@ public class FreakingMath extends AppCompatActivity {
         }
 
     };
+
     private Handler closeDialog = new Handler() {
         @Override
         public void handleMessage(Message msg) {

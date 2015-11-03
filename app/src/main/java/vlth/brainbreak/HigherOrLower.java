@@ -25,6 +25,7 @@ public class HigherOrLower extends AppCompatActivity {
 
     private ImageButton btH;
     private ImageButton btL;
+    private TextView info, info1, info2;
     private TextView num, score;
     private int firstNum, lastNum, ranNum = -1, temp = -1, myScore = 0;
     private NumberProgressBar progressBar;
@@ -79,6 +80,9 @@ public class HigherOrLower extends AppCompatActivity {
             public void onClick(View v) {
                 main_view.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.GONE);
+                info.setVisibility(View.GONE);
+                info1.setVisibility(View.GONE);
+                info2.setVisibility(View.GONE);
                 new CountDownTimer(800, 500) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -100,6 +104,15 @@ public class HigherOrLower extends AppCompatActivity {
             }
         });
 
+        info = (TextView) findViewById(R.id.info);
+        info1 = (TextView) findViewById(R.id.info1);
+        info2 = (TextView) findViewById(R.id.info2);
+        info.setTypeface(fonts);
+        info1.setTypeface(fonts);
+        info2.setTypeface(fonts);
+
+        info1.setText(R.string.info_hl1);
+        info2.setText(R.string.info_hl2);
 
     }
     private void setRandomNumberLV1() {
