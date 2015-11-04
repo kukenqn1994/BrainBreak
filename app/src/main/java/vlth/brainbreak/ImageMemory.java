@@ -1,9 +1,14 @@
 package vlth.brainbreak;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,22 +19,24 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.CountDownLatch;
 
 import vlth.brainbreak.Library.NumberProgressBar;
 import vlth.brainbreak.Util.HighScore;
+import vlth.brainbreak.Util.ID;
 import vlth.brainbreak.Util.MyTimer;
+import vlth.brainbreak.Util.SoundUtil;
 
 public class ImageMemory extends AppCompatActivity {
 
-    private TextView requestView;
-    private String request;
+    private TextView requestView, scoreView;
     private Toolbar toolbar;
-
+    private int score;
     private ArrayList<Integer> listImage;
     private ArrayList<ImageView> listView;
     private ImageView imgView1, imgView2, imgView3, imgView4;
     private Random r;
-    LinearLayout mainView;
+    private LinearLayout mainView;
     private ImageButton fab;
     private TextView info, info1, info2;
     private MyTimer timer;
@@ -42,8 +49,8 @@ public class ImageMemory extends AppCompatActivity {
         setContentView(R.layout.activity_image_memory);
         requestView = (TextView) findViewById(R.id.request);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView toolsbarTitle;
-        toolsbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        TextView toolsbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        scoreView = (TextView) findViewById(R.id.score);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         highScore = new HighScore(this);
         imgView1 = (ImageView) findViewById(R.id.Img1);
@@ -63,6 +70,7 @@ public class ImageMemory extends AppCompatActivity {
         listView.add(imgView4);
         mainView = (LinearLayout) findViewById(R.id.ImageMemmory);
         fab = (ImageButton) findViewById(R.id.fab);
+        score = 0;
         // add toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -90,6 +98,10 @@ public class ImageMemory extends AppCompatActivity {
         info1.setText(R.string.info_fi1);
         info2.setText(R.string.info_fi2);
 
+        timer = new MyTimer(2000);
+        timer.setID(progressBar);
+        timer.setOnTickHtmlListener(gameLose);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,17 +110,57 @@ public class ImageMemory extends AppCompatActivity {
                 info1.setVisibility(View.GONE);
                 info2.setVisibility(View.GONE);
                 mainView.setVisibility(View.VISIBLE);
+                requestView.setText("...............");
+                Log.d("TAG", "vbgerg");
+                new CountDownTimer(800, 500) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        setResRandom();
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        setResRandom();
+                        Log.d("TAG", "vbgerg");
+                        timer.tick();
+                    }
+
+
+                }.start();
             }
         });
-        setResRandom();
+    }
+
+    public void CLick(View v) {
+        switch (v.getId()) {
+            case R.id.Img1: {
+
+            }
+            case R.id.Img2: {
+
+            }
+            case R.id.Img3: {
+
+            }
+            case R.id.Img4: {
+
+            }
+
+        }
+    }
+
+    private void Play() {
+
     }
 
     private void setResRandom() {
-        int n;
+        int n, id;
         for (int i = 3; i >= 0; i --) {
             n = r.nextInt(i + 1);
-            listView.get(i).setImageResource(listImage.get(n));
+            id = listImage.get(n);
+            listView.get(i).setImageResource(id);
             listImage.remove(n);
+            listImage.add(id);
         }
     }
 
@@ -134,7 +186,31 @@ public class ImageMemory extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void setRequest(String request) {
-        this.request = request;
-    }
+    private Handler gameLose = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            // stop progress bar
+            timer.stop();
+            highScore.setScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER, score);
+            score = 0;
+            SoundUtil.play(ImageMemory.this, SoundUtil.DIE);
+            EndDialog endDialog = new EndDialog(ImageMemory.this, closeDialog);
+            endDialog.show();
+        }
+
+    };
+    private Handler closeDialog = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Intent intent = getIntent();
+            finish();
+            if (msg.what == 0)
+                startActivity(intent);
+            if (msg.what == 1)
+                finish();
+        }
+    };
+
 }
