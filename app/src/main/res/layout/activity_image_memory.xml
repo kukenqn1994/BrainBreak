@@ -12,9 +12,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ImageMemmory_layout"
+        android:id="@+id/ImageMemmory"
         android:weightSum="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,40 +80,15 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:weightSum="1">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ready"
-                android:textSize="30sp"
-                android:id="@+id/ready"
-                android:layout_marginRight="10dp"
-                android:layout_weight="0.2"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:textSize="30sp"
-                android:id="@+id/back"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0.2"/>
-        </LinearLayout>
-
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <ImageButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_media_play" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_play2"
+    />
 </FrameLayout>
