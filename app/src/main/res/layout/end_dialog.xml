@@ -48,6 +48,16 @@
                 android:textColor="#d0ef0b0b"
                 android:textSize="18dp"
                 android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/newHighScore"
+                android:text="New high score"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="#d0ef0b0b"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"

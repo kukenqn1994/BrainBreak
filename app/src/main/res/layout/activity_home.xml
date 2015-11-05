@@ -25,4 +25,15 @@
         android:headerDividersEnabled="true"
         android:footerDividersEnabled="true"
         android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invite Friend"
+            android:textSize="30sp"
+            android:background="#46f"
+            android:id="@+id/invite"/>
+    </LinearLayout>
 </LinearLayout>

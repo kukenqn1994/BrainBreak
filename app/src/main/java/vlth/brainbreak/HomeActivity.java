@@ -8,8 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.facebook.FacebookSdk;
+import com.facebook.share.model.AppInviteContent;
+import com.facebook.share.widget.AppInviteDialog;
+
 import java.util.ArrayList;
 import vlth.brainbreak.Adapter.ListGameAdapter;
 import vlth.brainbreak.Model.ItemGame;
@@ -18,15 +24,18 @@ import vlth.brainbreak.Util.ID;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private final String applink = "https://fb.me/930419380326797";
+    private final String image = "https://lh3.googleusercontent.com/ZZPdzvlpK9r_Df9C3M7j1rNRi7hhHRvPhlklJ3lfi5jk86Jd1s0Y5wcQ1QgbVaAP5Q=w300";
     //Games infomation
     private String[] titles = new String[]{"Higer or Lower",
             "Mix Word", "Freaking Math", "Color or Shape", "Find Image", "Number"};
     private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find, R.drawable.number};
-    private String[] tut= new String[]{"1","2","3","4","5", "6"};
+    private String[] tut= new String[]{"1", "2", "3", "4", "5", "6"};
 
     ListView listView;
     ArrayList<ItemGame> rowItems;
     private Toolbar toolbar;
+    private Button invite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +98,22 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 5:
                         startActivity(new Intent(HomeActivity.this, NumberMemory.class));
+                }
+            }
+        });
+
+        //test invite
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        invite = (Button) findViewById(R.id.invite);
+        invite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (AppInviteDialog.canShow()) {
+                    AppInviteContent content = new AppInviteContent.Builder()
+                            .setApplinkUrl(applink)
+                            .setPreviewImageUrl(image)
+                            .build();
+                    AppInviteDialog.show(HomeActivity.this, content);
                 }
             }
         });

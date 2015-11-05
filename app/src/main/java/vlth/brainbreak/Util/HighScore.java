@@ -6,11 +6,10 @@ import android.content.SharedPreferences;
 import vlth.brainbreak.ColorShape;
 import vlth.brainbreak.FreakingMath;
 import vlth.brainbreak.HigherOrLower;
+import vlth.brainbreak.ImageMemory;
 import vlth.brainbreak.MirrorWord;
+import vlth.brainbreak.NumberMemory;
 
-/**
- * Created by Administrator on 10/21/2015.
- */
 public class HighScore {
     private static SharedPreferences preferences;
     private static SharedPreferences.Editor edit;
@@ -33,6 +32,15 @@ public class HighScore {
         if (context instanceof ColorShape) {
             preferences = context.getSharedPreferences(ID.GAME, 0);
         }
+
+        if (context instanceof ImageMemory) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
+        }
+
+        if (context instanceof NumberMemory) {
+            preferences = context.getSharedPreferences(ID.GAME, 0);
+        }
+
 
         edit = preferences.edit();
         edit = preferences.edit();

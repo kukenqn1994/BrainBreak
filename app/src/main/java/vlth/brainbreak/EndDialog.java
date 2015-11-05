@@ -7,10 +7,14 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +29,8 @@ import com.facebook.share.Sharer;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
+
+import org.w3c.dom.Text;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,6 +49,8 @@ public class EndDialog extends Dialog {
     Context context;
     private int mode = -1;
     private Bitmap bmp;
+    private TextView newHighscore;
+    private ScaleAnimation scaleAnimation;
 
     public EndDialog(final Context context, final Handler handler) {
         super(context);
@@ -74,10 +82,12 @@ public class EndDialog extends Dialog {
         Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Comic.ttf");
 
         LinearLayout layout = (LinearLayout) this.findViewById(R.id.root);
-
+        newHighscore = (TextView) this.findViewById(R.id.newHighScore);
+        scaleAnimation = (ScaleAnimation) AnimationUtils.loadAnimation(this.context, R.anim.scale_anim);
+        RotateAnimation rotateAnimation = (RotateAnimation) AnimationUtils.loadAnimation(this.context, R.anim.rotate_anim);
         mTvYourMove = (TextView) this.findViewById(R.id.yourMove);
         mTvYourBest = (TextView) this.findViewById(R.id.yourBest);
-        mTvTitle=(TextView)this.findViewById(R.id.gameOver);
+        mTvTitle = (TextView) this.findViewById(R.id.gameOver);
         mTvYourBest.setTypeface(font);
         mTvYourMove.setTypeface(font);
         mTvTitle.setTypeface(font);
@@ -133,6 +143,20 @@ public class EndDialog extends Dialog {
             best_score = HighScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0);
             if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, current_score);
+                newHighscore.setText("New score: " + String.valueOf(current_score));
+                newHighscore.setVisibility(View.VISIBLE);
+                new CountDownTimer(10000, 1000) {
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        newHighscore.startAnimation(scaleAnimation);
+                    }
+                }.start();
             }
         }
         if (context instanceof MirrorWord) {
@@ -140,6 +164,21 @@ public class EndDialog extends Dialog {
             best_score = HighScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0);
             if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_MIX_WORD, current_score);
+                newHighscore.setText("New score: " + String.valueOf(current_score));
+                newHighscore.setVisibility(View.VISIBLE);
+                newHighscore.startAnimation(scaleAnimation);
+                new CountDownTimer(10000, 1000) {
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        newHighscore.startAnimation(scaleAnimation);
+                    }
+                }.start();
             }
         }
         if (context instanceof FreakingMath) {
@@ -147,6 +186,20 @@ public class EndDialog extends Dialog {
             best_score = HighScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0);
             if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_FREAKING_MATH, current_score);
+                newHighscore.setText("New score: " + String.valueOf(current_score));
+                newHighscore.setVisibility(View.VISIBLE);
+                new CountDownTimer(10000, 1000) {
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        newHighscore.startAnimation(scaleAnimation);
+                    }
+                }.start();
             }
         }
         if (context instanceof ColorShape) {
@@ -154,6 +207,42 @@ public class EndDialog extends Dialog {
             best_score = HighScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0);
             if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_COLOR_SHAPE, current_score);
+                newHighscore.setText("New score: " + String.valueOf(current_score));
+                newHighscore.setVisibility(View.VISIBLE);
+                new CountDownTimer(10000, 1000) {
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        newHighscore.startAnimation(scaleAnimation);
+                    }
+                }.start();
+
+            }
+        }
+        if (context instanceof ImageMemory) {
+            current_score = HighScore.getScore(ID.NORMAL_SCORE_FIND_IMAGE, 0);
+            best_score = HighScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0);
+            if (current_score > best_score) {
+                HighScore.setScore(ID.HIGH_SCORE_FIND_IMAGE, current_score);
+                newHighscore.setText("New score: " + String.valueOf(current_score));
+                newHighscore.setVisibility(View.VISIBLE);
+                new CountDownTimer(10000, 1000) {
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        newHighscore.startAnimation(scaleAnimation);
+                    }
+                }.start();
             }
         }
         mTvYourMove.setText("YOUR SCORE: " + current_score);

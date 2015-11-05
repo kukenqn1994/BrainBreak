@@ -77,7 +77,7 @@ public class FreakingMath extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
+                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
                 finish();
             }
         });

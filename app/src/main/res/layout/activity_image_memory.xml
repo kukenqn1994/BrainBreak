@@ -42,7 +42,8 @@
                 android:textSize="30sp"
                 android:id="@+id/request"
                 android:layout_weight="0.2"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:textColor="#f00"/>
         </LinearLayout>
 
 
@@ -85,7 +86,8 @@
                 android:layout_width="50dp"
                 android:layout_height="100dp"
                 android:id="@+id/Img4"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:onClick="Click"/>
 
         </LinearLayout>
         <TextView
