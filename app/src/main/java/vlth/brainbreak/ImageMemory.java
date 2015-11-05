@@ -15,6 +15,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
+import vlth.brainbreak.Library.NumberProgressBar;
+import vlth.brainbreak.Util.HighScore;
+import vlth.brainbreak.Util.MyTimer;
+
 public class ImageMemory extends AppCompatActivity {
 
     private TextView requestView;
@@ -28,6 +32,9 @@ public class ImageMemory extends AppCompatActivity {
     LinearLayout mainView;
     private ImageButton fab;
     private TextView info, info1, info2;
+    private MyTimer timer;
+    private HighScore highScore;
+    private NumberProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,8 @@ public class ImageMemory extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         TextView toolsbarTitle;
         toolsbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
+        highScore = new HighScore(this);
         imgView1 = (ImageView) findViewById(R.id.Img1);
         imgView2 = (ImageView) findViewById(R.id.Img2);
         imgView3 = (ImageView) findViewById(R.id.Img3);
