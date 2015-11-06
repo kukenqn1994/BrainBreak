@@ -4,93 +4,102 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/ColorShape"
-        android:visibility="visible">
+        android:orientation="vertical">
 
         <include
             android:id="@+id/toolbar"
             layout="@layout/tool_bar">
         </include>
 
-        <vlth.brainbreak.Library.NumberProgressBar
-            android:id="@+id/proTimer"
-            style="@style/NumberProgressBar_Default" />
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginTop="50dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/ColorShape"
+            android:visibility="gone">
 
-            <TextView
+
+            <vlth.brainbreak.Library.NumberProgressBar
+                android:id="@+id/proTimer"
+                style="@style/NumberProgressBar_Default" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dip"
-                android:id="@+id/tw1"
-                />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginTop="50dp">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dip"
+                    android:id="@+id/tw1"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dip"
+                    android:id="@+id/tw2"
+                    android:layout_marginLeft="5dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25dip"
-                android:id="@+id/tw2"
-                android:layout_marginLeft="5dp"
-                />
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:id="@+id/im1"
+                    android:clickable="false"
+                    />
+
+                <ImageView
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:id="@+id/im2"
+                    android:clickable="false"
+                    android:layout_marginLeft="30dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dip"
+                    android:text="Your Point:"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dip"
+                    android:id="@+id/point"
+                    android:layout_marginLeft="10dp"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_marginTop="5dp">
-
-            <ImageView
-                android:layout_width="100dip"
-                android:layout_height="100dip"
-                android:id="@+id/im1"
-                android:clickable="false"
-                />
-
-            <ImageView
-                android:layout_width="100dip"
-                android:layout_height="100dip"
-                android:id="@+id/im2"
-                android:clickable="false"
-                android:layout_marginLeft="30dp"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25dip"
-                android:text="Your Point:"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25dip"
-                android:id="@+id/point"
-                android:layout_marginLeft="10dp"
-                />
-
-        </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
