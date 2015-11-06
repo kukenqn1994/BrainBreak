@@ -301,9 +301,12 @@ public class FreakingMath extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            ans1.setClickable(false);
+            ans2.setClickable(false);
             if (finish) {
                 return;
             }
+            mytimer.stop();
             highScore.setScore(ID.NORMAL_SCORE_FREAKING_MATH, myScore);
             myScore = 0;
             SoundUtil.play(FreakingMath.this, SoundUtil.DIE);

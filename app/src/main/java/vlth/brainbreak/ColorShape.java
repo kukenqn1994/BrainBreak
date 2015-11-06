@@ -27,7 +27,6 @@ import vlth.brainbreak.Util.SoundUtil;
 public class ColorShape extends AppCompatActivity {
 
     private NumberProgressBar prog;
-    private TextView noti;
     private TextView tw1, tw2;
     private TextView point;
     private ImageView im1, im2;
@@ -59,7 +58,6 @@ public class ColorShape extends AppCompatActivity {
         setContentView(R.layout.activity_color_shape);
 
         prog = (NumberProgressBar) findViewById(R.id.proTimer);
-        noti = (TextView) findViewById(R.id.noti);
         tw1 = (TextView) findViewById(R.id.tw1);
         tw2 = (TextView) findViewById(R.id.tw2);
 
@@ -153,8 +151,6 @@ public class ColorShape extends AppCompatActivity {
         timer.setOnTickHtmlListener(gameLose);
         timer.setID(prog);
         timer.tick();
-
-        noti.setText("");
 
         rd = random2();
         switch (rd) {
@@ -251,9 +247,12 @@ public class ColorShape extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            im1.setClickable(false);
+            im2.setClickable(false);
             if (finish) {
                 return;
             }
+            timer.stop();
             highScore.setScore(ID.NORMAL_SCORE_COLOR_SHAPE, myScore);
             myScore = 0;
             SoundUtil.play(ColorShape.this, SoundUtil.DIE);
