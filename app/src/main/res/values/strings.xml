@@ -4,19 +4,6 @@ cs1    <string name="app_name">Brain Breaks</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name="words_lv1">
-        <item>action</item>
-        <item>animal</item>
-        <item>apple</item>
-        <item>banana</item>
-        <item>candy</item>
-        <item>chicken</item>
-        <item>coffee</item>
-        <item>correct</item>
-        <item>clean</item>
-        <item>cheese</item>
-    </string-array>
-
     <string-array name="cs">
         <item>Color</item>
         <item>Shape</item>
@@ -42,38 +29,251 @@ cs1    <string name="app_name">Brain Breaks</string>
     <string name="title_activity_image_memory">ImageMemory</string>
     <string name="title_activity_loading_screen">LoadingScreen</string>
 
-    <string name="info_fm1">
-        - Answer the question in only 1.5 second.
-    </string>
-    <string name="info_fm2">
-        - Reach the highest score and share with your friends.
-    </string>
+    <string name="info_fm1"> Answer the question in only 1.5 second.</string>
+    <string name="info_fm2"> Reach the highest score and share with your friends.</string>
 
-    <string name="info_hl1">
-        - Hit the up/down arrow if you saw the next number is higher or lower than the previous.
-    </string>
-    <string name="info_hl2">
-        - Reach the highest score and share with your friends.
-    </string>
+    <string name="info_hl1"> Hit the up/down arrow if you saw the next number is higher or lower than the previous.</string>
+    <string name="info_hl2"> Reach the highest score and share with your friends.</string>
 
-    <string name="info_mw1">
-        - We give you word, and you will find the answer that have character math with the word we give you.
-    </string>
-    <string name="info_mw2">
-        - Reach the highest score and share with your friends.
-    </string>
+    <string name="info_mw1"> We give you word, and you will find the answer that have character math with the word we give you.</string>
+    <string name="info_mw2"> Reach the highest score and share with your friends.</string>
 
-    <string name="info_cs1">
-        - Follow the word we give you: color or shape, to choose the right picture.
-    </string>
-    <string name="info_cs2">
-        - Reach the highest score and share with your friends.
-    </string>
-    <string name="info_fi1">
-        Read the request and tap the true image.
-    </string>
-    <string name="info_fi2">
-        Reach the highest score and share with your friends.
-    </string>
+    <string name="info_cs1"> Follow the word we give you: color or shape, to choose the right picture.</string>
+    <string name="info_cs2"> Reach the highest score and share with your friends.</string>
+    <string name="info_fi1"> Read the request and tap the true image.</string>
+    <string name="info_fi2"> Reach the highest score and share with your friends.</string>
+    <string-array name="words_lv1">
+        <item>also</item>
+        <item>best</item>
+        <item>bird</item>
+        <item>blue</item>
+        <item>book</item>
+        <item>both</item>
+        <item>door</item>
+        <item>duck</item>
+        <item>wide</item>
+        <item>very</item>
 
+        <item>ugly</item>
+        <item>told</item>
+        <item>tape</item>
+        <item>slow</item>
+        <item>rule</item>
+        <item>rock</item>
+        <item>odor</item>
+        <item>note</item>
+        <item>name</item>
+        <item>club</item>
+
+        <item>deep</item>
+        <item>lake</item>
+        <item>left</item>
+        <item>road</item>
+        <item>sign</item>
+        <item>trip</item>
+        <item>west</item>
+        <item>hill</item>
+        <item>farm</item>
+        <item>city</item>
+
+        <item>boss</item>
+        <item>team</item>
+        <item>work</item>
+        <item>tool</item>
+        <item>cold</item>
+        <item>dark</item>
+        <item>fall</item>
+        <item>gray</item>
+        <item>heat</item>
+        <item>warm</item>
+
+        <item>rain</item>
+        <item>wind</item>
+        <item>ball</item>
+        <item>belt</item>
+        <item>date</item>
+        <item>girl</item>
+        <item>wife</item>
+        <item>aunt</item>
+        <item>sand</item>
+        <item>room</item>
+
+    </string-array>
+
+    <string-array name="words_lv2">
+
+        <item>again</item>
+        <item>angry</item>
+        <item>badly</item>
+        <item>black</item>
+        <item>brown</item>
+        <item>clean</item>
+        <item>could</item>
+        <item>dirty</item>
+        <item>dream</item>
+        <item>empty</item>
+
+        <item>found</item>
+        <item>funny</item>
+        <item>grass</item>
+        <item>green</item>
+        <item>happy</item>
+        <item>horse</item>
+        <item>light</item>
+        <item>match</item>
+        <item>metal</item>
+        <item>noisy</item>
+
+        <item>paper</item>
+        <item>place</item>
+        <item>plant</item>
+        <item>quick</item>
+        <item>quiet</item>
+        <item>score</item>
+        <item>skirt</item>
+        <item>short</item>
+        <item>smart</item>
+        <item>sorry</item>
+
+        <item>these</item>
+        <item>truth</item>
+        <item>voice</item>
+        <item>vowel</item>
+        <item>white</item>
+        <item>woman</item>
+        <item>worse</item>
+        <item>apple</item>
+        <item>bread</item>
+        <item>candy</item>
+
+        <item>fruit</item>
+        <item>knife</item>
+        <item>piece</item>
+        <item>sweet</item>
+        <item>table</item>
+        <item>water</item>
+        <item>skill</item>
+        <item>equal</item>
+        <item>color</item>
+        <item>april</item>
+
+    </string-array>
+
+    <string-array name="words_lv3">
+
+        <item>august</item>
+        <item>before</item>
+        <item>during</item>
+        <item>friday</item>
+        <item>minute</item>
+        <item>number</item>
+        <item>summer</item>
+        <item>sunday</item>
+        <item>behind</item>
+        <item>inside</item>
+
+        <item>nearby</item>
+        <item>appear</item>
+        <item>lawyer</item>
+        <item>season</item>
+        <item>course</item>
+        <item>degree</item>
+        <item>muscle</item>
+        <item>effort</item>
+        <item>anyone</item>
+        <item>afraid</item>
+
+        <item>cancer</item>
+        <item>broken</item>
+        <item>finger</item>
+        <item>shower</item>
+        <item>throat</item>
+        <item>fluent</item>
+        <item>letter</item>
+        <item>basket</item>
+        <item>blouse</item>
+        <item>bucket</item>
+
+        <item>camera</item>
+        <item>cotton</item>
+        <item>flower</item>
+        <item>market</item>
+        <item>mirror</item>
+        <item>action</item>
+        <item>famous</item>
+        <item>louder</item>
+        <item>modern</item>
+        <item>soccer</item>
+
+        <item>tennis</item>
+        <item>bridge</item>
+        <item>church</item>
+        <item>circle</item>
+        <item>flight</item>
+        <item>garden</item>
+        <item>island</item>
+        <item>middle</item>
+        <item>museum</item>
+        <item>office</item>
+
+    </string-array>
+
+    <string-array name="words_lv4">
+
+        <item>address</item>
+        <item>airplane</item>
+        <item>airport</item>
+        <item>bathroom</item>
+        <item>bicycle</item>
+        <item>capital</item>
+        <item>college</item>
+        <item>country</item>
+        <item>embassy</item>
+        <item>forward</item>
+
+        <item>highway</item>
+        <item>passport</item>
+        <item>province</item>
+        <item>station</item>
+        <item>tourist</item>
+        <item>goodbye</item>
+        <item>surprise</item>
+        <item>children</item>
+        <item>husband</item>
+        <item>meeting</item>
+
+        <item>parents</item>
+        <item>together</item>
+        <item>finger</item>
+        <item>shower</item>
+        <item>throat</item>
+        <item>fluent</item>
+        <item>letter</item>
+        <item>basket</item>
+        <item>blouse</item>
+        <item>bucket</item>
+
+        <item>camera</item>
+        <item>cotton</item>
+        <item>flower</item>
+        <item>market</item>
+        <item>mirror</item>
+        <item>action</item>
+        <item>famous</item>
+        <item>louder</item>
+        <item>modern</item>
+        <item>soccer</item>
+
+        <item>tennis</item>
+        <item>bridge</item>
+        <item>church</item>
+        <item>circle</item>
+        <item>flight</item>
+        <item>garden</item>
+        <item>island</item>
+        <item>middle</item>
+        <item>museum</item>
+        <item>office</item>
+
+    </string-array>
 </resources>

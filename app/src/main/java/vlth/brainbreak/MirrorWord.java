@@ -28,7 +28,7 @@ public class MirrorWord extends AppCompatActivity {
     NumberProgressBar progressBar;
     MyTimer myTimer;
 
-    String[] words_lv1;
+    String[] words_lv1,words_lv2,words_lv3,words_lv4;
     private int ca_position;
     private int myScore = 0;
 
@@ -55,7 +55,7 @@ public class MirrorWord extends AppCompatActivity {
         highScore = new HighScore(this);
         prototype();
         setRandomAnsser();
-        myTimer = new MyTimer(2000);
+        myTimer = new MyTimer(2500);
         myTimer.setID(progressBar);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +88,7 @@ public class MirrorWord extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle.setText("Mirror Word");
-        toolbarTitle.setTypeface(fonts);
+        toolbarTitle.setTypeface(fonts,Typeface.BOLD);
         txtQuestion.setTypeface(fonts);
         txtScore.setTypeface(fonts);
         btAnswer[0].setTypeface(fonts);
@@ -116,6 +116,9 @@ public class MirrorWord extends AppCompatActivity {
         txtScore = (TextView) findViewById(R.id.point);
         progressBar = (NumberProgressBar) findViewById(R.id.proTimer);
         words_lv1 = getResources().getStringArray(R.array.words_lv1);
+        words_lv2 = getResources().getStringArray(R.array.words_lv2);
+        words_lv3 = getResources().getStringArray(R.array.words_lv3);
+        words_lv4 = getResources().getStringArray(R.array.words_lv4);
         fab = (ImageButton) findViewById(R.id.fab);
         main_view = (LinearLayout) findViewById(R.id.main_layout);
     }
@@ -123,8 +126,21 @@ public class MirrorWord extends AppCompatActivity {
 
     private String getRandomQuestion() {
         Random r = new Random();
-        int index = words_lv1.length;
-        txtQuestion.setText(words_lv1[r.nextInt(index)]);
+        if(myScore<10){
+            int index = words_lv1.length;
+            txtQuestion.setText(words_lv1[r.nextInt(index)]);
+        }else if(myScore>=10&&myScore<20){
+            int index = words_lv2.length;
+            txtQuestion.setText(words_lv2[r.nextInt(index)]);
+        }
+        else if(myScore>=20&&myScore<30){
+            int index = words_lv3.length;
+            txtQuestion.setText(words_lv3[r.nextInt(index)]);
+        }else {
+            int index = words_lv4.length;
+            txtQuestion.setText(words_lv4[r.nextInt(index)]);
+        }
+
         return txtQuestion.getText().toString();
     }
 

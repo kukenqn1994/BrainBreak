@@ -78,7 +78,7 @@ public class NumberMemory extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolsbarTitle.setText("Number Memory");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
-        toolsbarTitle.setTypeface(fonts);
+        toolsbarTitle.setTypeface(fonts,Typeface.BOLD);
         toolbars.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

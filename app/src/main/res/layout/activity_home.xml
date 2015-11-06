@@ -12,19 +12,25 @@
         layout="@layout/tool_bar">
     </include>
 
-    <ListView
+    <!--<ListView-->
+        <!--android:id="@+id/list_game"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_margin="4dp"-->
+        <!--android:divider="@null"-->
+        <!--android:dividerHeight="5dp"-->
+        <!--android:background="#dbdbdc"-->
+        <!--android:listSelector="@android:color/transparent"-->
+        <!--android:cacheColorHint="@android:color/transparent"-->
+        <!--android:headerDividersEnabled="true"-->
+        <!--android:footerDividersEnabled="true"-->
+        <!--android:layout_weight="1"/>-->
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/list_game"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="4dp"
-        android:divider="@null"
-        android:dividerHeight="5dp"
-        android:background="#dbdbdc"
-        android:listSelector="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
-        android:headerDividersEnabled="true"
-        android:footerDividersEnabled="true"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
