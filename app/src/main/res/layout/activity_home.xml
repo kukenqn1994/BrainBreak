@@ -37,9 +37,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Invite Friend"
             android:textSize="30sp"
-            android:background="#46f"
+            android:background="@drawable/invite_button"
             android:id="@+id/invite"/>
     </LinearLayout>
 </LinearLayout>
