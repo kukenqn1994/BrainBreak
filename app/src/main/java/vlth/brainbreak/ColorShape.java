@@ -80,7 +80,7 @@ public class ColorShape extends AppCompatActivity {
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Color Shape");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
-        toolbarTitle.setTypeface(fonts);
+        toolbarTitle.setTypeface(fonts,Typeface.BOLD);
         timer = new MyTimer(1500);
         fabtn.setOnClickListener(new View.OnClickListener() {
             @Override

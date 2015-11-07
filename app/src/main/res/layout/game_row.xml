@@ -1,74 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_card_background"
-    android:descendantFocusability="afterDescendants"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardUseCompatPadding="true"
+    >
 
-    <!--  ListRow Left sied Thumbnail image -->
-    <LinearLayout android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="3dip"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/image_bg"
-        android:layout_marginRight="8dip">
-
-        <ImageView
-            android:id="@+id/list_image"
-            android:layout_width="80dip"
-            android:layout_height="80dip"
-            />
-
-    </LinearLayout>
-
-    <!-- Title Of Song-->
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:textColor="#040404"
-        android:text="Title"
-        android:textSize="16dip"
-        android:textStyle="bold"/>
-
-    <!-- Artist Name -->
-    <TextView
-        android:id="@+id/desc"
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:textColor="#343434"
-        android:textSize="10dip"
-        android:layout_marginTop="1dip"
-        android:layout_toRightOf="@+id/thumbnail"
-        android:text="Game hint" />
+        android:padding="5dp"
+        >
 
-    <!-- Rightend Duration -->
+        <!--  ListRow Left sied Thumbnail image -->
+        <LinearLayout
+            android:id="@+id/thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dip"
+            android:background="@drawable/image_bg"
+            android:padding="3dip">
 
-    <TextView
-        android:id="@+id/best_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="999"
-        android:textSize="15dip"
-        android:textColor="#10bcc9"
-        android:textStyle="bold"
-        android:layout_alignBottom="@+id/thumbnail"
-        android:layout_alignRight="@+id/desc"
-        android:layout_alignEnd="@+id/desc" />
+            <ImageView
+                android:id="@+id/list_image"
+                android:layout_width="80dip"
+                android:layout_height="80dip" />
+
+        </LinearLayout>
+
+        <!-- Title Of Song-->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="Title"
+            android:textColor="#009688"
+            android:textSize="16dip"
+            android:textStyle="italic" />
+
+        <!-- Artist Name -->
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="1dip"
+            android:layout_toRightOf="@+id/thumbnail"
+            android:text="Chọn mũi tên lên/xuống nếu bạn thấy số tiếp theo lớn hơn/nhỏ hơn số trước."
+            android:textColor="#787070"
+            android:textSize="12sp" />
+
+        <!-- Rightend Duration -->
+
+        <TextView
+            android:id="@+id/best_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="999"
+            android:textColor="#c91076"
+            android:textSize="15dip"
+            android:textStyle="bold"
+            android:layout_alignBaseline="@+id/title"
+            android:layout_alignBottom="@+id/title"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 
-    <!-- Rightend Arrow -->
-    <!--<ImageView android:layout_width="wrap_content"-->
+        <!-- Rightend Arrow -->
+        <!--<ImageView android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:src="@drawable/ic_play"-->
         <!--android:layout_alignParentRight="true"-->
         <!--android:layout_centerVertical="true"/>-->
 
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -84,7 +84,7 @@ public class ImageMemory extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolsbarTitle.setText("Find Image");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
-        toolsbarTitle.setTypeface(fonts);
+        toolsbarTitle.setTypeface(fonts,Typeface.BOLD);
         requestView.setTypeface(fonts);
         scoreView.setTypeface(fonts);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -59,7 +59,7 @@ public class HigherOrLower extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbarTitle.setText("Higher or Lower");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
-        toolbarTitle.setTypeface(fonts);
+        toolbarTitle.setTypeface(fonts,Typeface.BOLD);
         num.setTypeface(fonts);
         score.setTypeface(fonts);
 

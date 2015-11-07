@@ -84,6 +84,7 @@
                         android:background="@drawable/bt_corner"
                         android:onClick="answerClick"
                         android:text="answer 1"
+                        android:textSize="16sp"
                         android:textAllCaps="false"
                         android:textColor="#fff" />
 
@@ -96,6 +97,7 @@
                         android:background="@drawable/bt_corner"
                         android:onClick="answerClick"
                         android:text="answer 2"
+                        android:textSize="16sp"
                         android:textAllCaps="false"
                         android:textColor="#fff" />
                 </LinearLayout>
@@ -117,6 +119,7 @@
                         android:background="@drawable/bt_corner"
                         android:onClick="answerClick"
                         android:text="answer 3"
+                        android:textSize="16sp"
                         android:textAllCaps="false"
                         android:textColor="#fff" />
 
@@ -126,6 +129,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="8dp"
                         android:layout_weight="0.5"
+                        android:textSize="16sp"
                         android:background="@drawable/bt_corner"
                         android:onClick="answerClick"
                         android:text="answer 4"

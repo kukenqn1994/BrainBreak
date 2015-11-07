@@ -5,20 +5,24 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.widget.AppInviteDialog;
 
 import java.util.ArrayList;
-import vlth.brainbreak.Adapter.ListGameAdapter;
+import java.util.List;
+
+import vlth.brainbreak.Adapter.ListGamesAdapter;
 import vlth.brainbreak.Model.ItemGame;
 import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
@@ -31,12 +35,15 @@ public class HomeActivity extends AppCompatActivity {
     private String[] titles = new String[]{"Higer or Lower",
             "Mix Word", "Freaking Math", "Color or Shape", "Find Image", "Number"};
     private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find, R.drawable.number};
-    private String[] tut= new String[]{"1", "2", "3", "4", "5", "6"};
+    private String[] tut = new String[]{"1", "2", "3", "4", "5", "6"};
 
     ListView listView;
     ArrayList<ItemGame> rowItems;
     private Toolbar toolbar;
     private Button invite;
+    private LinearLayoutManager lLayout;
+    private HighScore highScore;
+    private int[] best_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +57,13 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         TextView toolbarTitle;
-        toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
+        toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Brain Breaks");
 
-        toolbarTitle.setTypeface(font);
+        toolbarTitle.setTypeface(font,Typeface.BOLD);
 
-        HighScore highScore = new HighScore(this);
-        int[] best_score = {
+        highScore = new HighScore(this);
+        best_score = new int[]{
                 highScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0),
                 highScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0),
                 highScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0),
@@ -65,18 +72,25 @@ public class HomeActivity extends AppCompatActivity {
                 highScore.getScore(ID.HIGH_SCORE_NUMBER, 0)};
 
 
-        rowItems = new ArrayList<>();
-        for (int i = 0; i < titles.length; i++) {
-            ItemGame item = new ItemGame(titles[i], best_score[i],tut[i], cover[i]);
-            rowItems.add(item);
-        }
-        listView = (ListView) findViewById(R.id.list_game);
-        ListGameAdapter adapter = new ListGameAdapter(this, R.layout.game_row, rowItems);
-        listView.setAdapter(adapter);
+//        rowItems = new ArrayList<>();
+//        for (int i = 0; i < titles.length; i++) {
+//            ItemGame item = new ItemGame(titles[i], best_score[i],tut[i], cover[i]);
+//            rowItems.add(item);
+//        }
+//        listView = (ListView) findViewById(R.id.list_game);
+//        ListGameAdapter adapter = new ListGameAdapter(this, R.layout.game_row, rowItems);
+//        listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        List<ItemGame> rowListItem = getAllItemList();
+        lLayout = new LinearLayoutManager(HomeActivity.this);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_game);
+        recyclerView.setLayoutManager(lLayout);
+        ListGamesAdapter rcAdapter = new ListGamesAdapter(HomeActivity.this, rowListItem);
+        recyclerView.setAdapter(rcAdapter);
+        recyclerView.setHasFixedSize(true);
+        rcAdapter.setOnItemClickListener(new ListGamesAdapter.MyClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(int position, View v) {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(HomeActivity.this, HigherOrLower.class));
@@ -104,7 +118,6 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
-
         //test invite
         FacebookSdk.sdkInitialize(getApplicationContext());
         invite = (Button) findViewById(R.id.invite);
@@ -120,6 +133,18 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private List<ItemGame> getAllItemList() {
+
+        List<ItemGame> allItems = new ArrayList<ItemGame>();
+        allItems.add(new ItemGame("Higher or Lower", best_score[0], R.string.info_hl1, R.drawable.hl));
+        allItems.add(new ItemGame("Mirror Words", best_score[1], R.string.info_mw1, R.drawable.wm));
+        allItems.add(new ItemGame("Freaking Math", best_score[2], R.string.info_fm1, R.drawable.fm));
+        allItems.add(new ItemGame("Color and Shape", best_score[3], R.string.info_cs1, R.drawable.geo));
+        allItems.add(new ItemGame("Find Image", best_score[4], R.string.info_fi1, R.drawable.find));
+        allItems.add(new ItemGame("Number ", best_score[5], R.string.info_hl1, R.drawable.number));
+        return allItems;
     }
 
     @Override

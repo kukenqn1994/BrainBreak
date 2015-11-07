@@ -72,7 +72,7 @@ public class FreakingMath extends AppCompatActivity {
         toolbarTitle=(TextView)findViewById(R.id.toolbar_title);
         toolbarTitle.setText("Freaking Math");
         Typeface fonts = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Comic.ttf");
-        toolbarTitle.setTypeface(fonts);
+        toolbarTitle.setTypeface(fonts,Typeface.BOLD);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
