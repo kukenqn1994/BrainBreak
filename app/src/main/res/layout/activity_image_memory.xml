@@ -5,101 +5,95 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/tool_bar">
-    </include>
-
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ImageMemmory"
-        android:weightSum="1"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/tool_bar">
+        </include>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
+            android:layout_height="match_parent"
+            android:id="@+id/ImageMemmory"
             android:orientation="vertical"
-            android:weightSum="1"
-            android:gravity="center">
+            android:visibility="gone">
+
+                <vlth.brainbreak.Library.NumberProgressBar
+                    android:id="@+id/proTimer"
+                    style="@style/NumberProgressBar_Default"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tap the first image"
+                    android:textSize="20dp"
+                    android:id="@+id/request"
+                    android:layout_weight="0.5"
+                    android:layout_marginTop="15dp"
+                    android:textColor="#f00"
+                    android:layout_gravity="center"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.8">
-                <vlth.brainbreak.Library.NumberProgressBar
-                    android:id="@+id/proTimer"
-                    style="@style/NumberProgressBar_Default"
-                    android:layout_gravity="bottom"/>
-            </LinearLayout>
+                android:layout_height="100dp"
+                android:layout_below="@+id/request"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:id="@+id/picture"
+                android:layout_weight="1">
 
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/Img1"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:onClick="Click"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/Img2"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:onClick="Click"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/Img3"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:onClick="Click"/>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/Img4"
+                    android:layout_weight="1"
+                    android:onClick="Click"/>
+
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tap the first image"
+                android:text="Score: "
                 android:textSize="30sp"
-                android:id="@+id/request"
-                android:layout_weight="0.2"
-                android:layout_marginTop="15dp"
-                android:textColor="#f00"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/request"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:id="@+id/picture"
-            android:layout_weight="0.4">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:id="@+id/Img1"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:onClick="Click"/>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:id="@+id/Img2"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:onClick="Click"/>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:id="@+id/Img3"
-                android:layout_weight="1"
-                android:layout_marginRight="10dp"
-                android:onClick="Click"/>
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:id="@+id/Img4"
-                android:layout_weight="1"
-                android:onClick="Click"/>
+                android:layout_gravity="center"
+                android:id="@+id/score"
+                android:layout_weight="1"/>
 
         </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Score: "
-            android:textSize="30sp"
-            android:layout_gravity="center"
-            android:id="@+id/score"/>
-
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

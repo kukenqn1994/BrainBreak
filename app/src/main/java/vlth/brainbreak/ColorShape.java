@@ -436,7 +436,7 @@ public class ColorShape extends AppCompatActivity {
         int rd = random2();
         switch (num3) {
             case 0:
-                tw2.setTextColor(Color.parseColor("#0cff00"));
+                tw2.setTextColor(Color.parseColor("#16832f"));
                 switch (num2) {
                     case 0:
                         switch (rd) {
@@ -477,7 +477,7 @@ public class ColorShape extends AppCompatActivity {
                 }
                 break;
             case 1:
-                tw2.setTextColor(Color.parseColor("#FFF000"));
+                tw2.setTextColor(Color.parseColor("#f8e100"));
                 switch (num2) {
                     case 0:
                         switch (rd) {

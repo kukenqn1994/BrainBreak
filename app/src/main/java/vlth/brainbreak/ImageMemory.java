@@ -59,10 +59,10 @@ public class ImageMemory extends AppCompatActivity {
         imgView2 = (ImageView) findViewById(R.id.Img2);
         imgView3 = (ImageView) findViewById(R.id.Img3);
         imgView4 = (ImageView) findViewById(R.id.Img4);
-        myImage1 = new Image(R.drawable.btnback, 0);
-        myImage2 = new Image(R.drawable.triangle_green, 1);
-        myImage3 = new Image(R.drawable.bg_dialog_test, 2);
-        myImage4 = new Image(R.drawable.ic_replay, 3);
+        myImage1 = new Image(R.drawable.img_gm1, 0);
+        myImage2 = new Image(R.drawable.img_gm2, 1);
+        myImage3 = new Image(R.drawable.img_gm3, 2);
+        myImage4 = new Image(R.drawable.img_gm4, 3);
         listImage = new ArrayList<>();
         listImage.add(myImage1.getCurrentIndex(), myImage1);
         listImage.add(myImage2.getCurrentIndex(), myImage2);
