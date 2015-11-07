@@ -1,7 +1,9 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -9,98 +11,200 @@
     </include>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
         android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".MainActivity"
-        android:id="@+id/NumberMomory"
-        android:visibility="gone">
+        android:id="@+id/NumberMemory"
+        android:visibility="gone"
+        android:weightSum="1">
 
-        <GridLayout
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="3"
-            android:padding="20dp">
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:id="@+id/bt1"
+                    android:textSize="30dp"
+                    android:text="1"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:background="@drawable/goctron"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt2"
+                    android:padding="30dp"
+                    android:text="2"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:background="@drawable/goctron2"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt3"
+                    android:padding="30dp"
+                    android:text="3"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:background="@drawable/goctron3"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:id="@+id/bt4"
+                    android:layout_marginTop="5dp"
+                    android:text="4"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:background="@drawable/goctron4"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt5"
+                    android:layout_marginTop="5dp"
+                    android:text="5"
+                    android:padding="30dp"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:background="@drawable/goctron5"
+                    android:textStyle="bold"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt6"
+                    android:layout_marginTop="5dp"
+                    android:text="6"
+                    android:padding="30dp"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:background="@drawable/goctron6"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="30dp"
+                    android:id="@+id/bt7"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/goctron8"
+                    android:text="7"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt8"
+                    android:layout_marginTop="5dp"
+                    android:text="8"
+                    android:padding="30dp"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:background="@drawable/goctron9"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/bt9"
+                    android:layout_marginTop="5dp"
+                    android:text="9"
+                    android:padding="30dp"
+                    android:textSize="30dp"
+                    android:onClick="click"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:background="@drawable/goctron"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:text="Your Point: "
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/point"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
 
             <Button
-                android:background="#42A5F5"
-                android:padding="30dp"
-                android:id="@+id/bt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_start"
+                android:text="Start"
                 android:textSize="30dp"
-                android:text="1"/>
-            <Button
-                android:background="#26A69A"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt2"
-                android:padding="30dp"
-                android:text="2"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#512DE8"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt3"
-                android:padding="30dp"
-                android:text="3"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#8BC34A"
-                android:padding="30dp"
-                android:id="@+id/bt4"
-                android:layout_marginTop="5dp"
-                android:text="4"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#F48FB1"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt5"
-                android:layout_marginTop="5dp"
-                android:text="5"
-                android:padding="30dp"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#E91E63"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt6"
-                android:layout_marginTop="5dp"
-                android:text="6"
-                android:padding="30dp"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#FFB300"
-                android:padding="30dp"
-                android:id="@+id/bt7"
-                android:layout_marginTop="5dp"
-                android:text="7"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#E64A19"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt8"
-                android:layout_marginTop="5dp"
-                android:text="8"
-                android:padding="30dp"
-                android:textSize="30dp"/>
-            <Button
-                android:background="#C62828"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/bt9"
-                android:layout_marginTop="5dp"
-                android:text="9"
-                android:padding="30dp"
-                android:textSize="30dp"/>
-        </GridLayout>
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center"
+                android:onClick="start"
+                android:background="@drawable/goctron3"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,21 +225,14 @@
             android:text="How to play"
             android:textSize="18dp"
             android:id="@+id/info2"/>
-
         <ImageButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_play2"
-            android:layout_weight="0.5"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center" />
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
+
 </FrameLayout>
-
-
-
-
-
-

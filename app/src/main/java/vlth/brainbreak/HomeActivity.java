@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -97,7 +98,9 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(HomeActivity.this, ImageMemory.class));
                         break;
                     case 5:
+                        Log.d("tag", "f");
                         startActivity(new Intent(HomeActivity.this, NumberMemory.class));
+                        break;
                 }
             }
         });
