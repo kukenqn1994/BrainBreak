@@ -62,9 +62,9 @@ public class MirrorWord extends AppCompatActivity {
             public void onClick(View v) {
                 main_view.setVisibility(View.VISIBLE);
                 fab.setVisibility(View.GONE);
-                info.setVisibility(View.GONE);
-                info1.setVisibility(View.GONE);
-                info2.setVisibility(View.GONE);
+//                info.setVisibility(View.GONE);
+//                info1.setVisibility(View.GONE);
+//                info2.setVisibility(View.GONE);
 
                 myTimer.tick();
                 myTimer.setOnTickHtmlListener(gameLose);
@@ -72,15 +72,15 @@ public class MirrorWord extends AppCompatActivity {
         });
 
 
-        info = (TextView) findViewById(R.id.info);
-        info1 = (TextView) findViewById(R.id.info1);
-        info2 = (TextView) findViewById(R.id.info2);
-        info.setTypeface(fonts);
-        info1.setTypeface(fonts);
-        info2.setTypeface(fonts);
-
-        info1.setText(R.string.info_mw1);
-        info2.setText(R.string.info_mw2);
+//        info = (TextView) findViewById(R.id.info);
+//        info1 = (TextView) findViewById(R.id.info1);
+//        info2 = (TextView) findViewById(R.id.info2);
+//        info.setTypeface(fonts);
+//        info1.setTypeface(fonts);
+//        info2.setTypeface(fonts);
+//
+//        info1.setText(R.string.info_mw1);
+//        info2.setText(R.string.info_mw2);
 
         // Them vao
         setSupportActionBar(toolbar);

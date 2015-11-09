@@ -1,18 +1,32 @@
 package vlth.brainbreak;
 
+import android.animation.FloatEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.LinearGradient;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.format.DateUtils;
+import android.text.style.CharacterStyle;
+import android.text.style.UpdateAppearance;
+import android.util.Property;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
@@ -37,6 +51,7 @@ import java.util.List;
 
 import vlth.brainbreak.Util.HighScore;
 import vlth.brainbreak.Util.ID;
+import vlth.brainbreak.Util.RainbowText;
 
 public class EndDialog extends Dialog {
 
@@ -51,7 +66,7 @@ public class EndDialog extends Dialog {
     private Bitmap bmp;
     private TextView newHighscore;
     private ScaleAnimation scaleAnimation;
-
+    private String title="";
     public EndDialog(final Context context, final Handler handler) {
         super(context);
         this.context = context;
@@ -79,8 +94,9 @@ public class EndDialog extends Dialog {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.end_dialog);
-        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Comic.ttf");
 
+
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "fonts/Comic.ttf");
         LinearLayout layout = (LinearLayout) this.findViewById(R.id.root);
         newHighscore = (TextView) this.findViewById(R.id.newHighScore);
         scaleAnimation = (ScaleAnimation) AnimationUtils.loadAnimation(this.context, R.anim.scale_anim);
@@ -91,10 +107,14 @@ public class EndDialog extends Dialog {
         mTvYourBest.setTypeface(font);
         mTvYourMove.setTypeface(font);
         mTvTitle.setTypeface(font);
+        newHighscore.setTypeface(font);
 
         share = (ImageButton) findViewById(R.id.btShare);
         home = (ImageButton) findViewById(R.id.btHome);
         replay = (ImageButton) findViewById(R.id.btReplay);
+
+        RainbowText rainbowText = new RainbowText(context,mTvYourMove);
+        rainbowText.startAnimation(mTvYourMove.getText().toString());
 
         setOnDismissListener(new OnDismissListener() {
             @Override
@@ -139,27 +159,18 @@ public class EndDialog extends Dialog {
         });
 
         if (context instanceof HigherOrLower) {
+            title="Higher or Lower";
             current_score = HighScore.getScore(ID.NORMAL_SCORE_HIGHER_OR_LOWER, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, 0);
             if (current_score > best_score) {
                 HighScore.setScore(ID.HIGH_SCORE_HIGHER_OR_LOWER, current_score);
-                newHighscore.setText("New score: " + String.valueOf(current_score));
-                newHighscore.setVisibility(View.VISIBLE);
-                new CountDownTimer(10000, 1000) {
+                mTvYourMove.setText("New High Score: "+current_score);
+                rainbowText.startAnimation(mTvYourMove.getText().toString());
 
-                    @Override
-                    public void onFinish() {
-
-                    }
-
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        newHighscore.startAnimation(scaleAnimation);
-                    }
-                }.start();
             }
         }
         if (context instanceof MirrorWord) {
+            title="Mirror Word";
             current_score = HighScore.getScore(ID.NORMAL_SCORE_MIX_WORD, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_MIX_WORD, 0);
             if (current_score > best_score) {
@@ -182,6 +193,7 @@ public class EndDialog extends Dialog {
             }
         }
         if (context instanceof FreakingMath) {
+            title="Freaking Math";
             current_score = HighScore.getScore(ID.NORMAL_SCORE_FREAKING_MATH, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_FREAKING_MATH, 0);
             if (current_score > best_score) {
@@ -203,6 +215,7 @@ public class EndDialog extends Dialog {
             }
         }
         if (context instanceof ColorShape) {
+            title="Color and Shape";
             current_score = HighScore.getScore(ID.NORMAL_SCORE_COLOR_SHAPE, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_COLOR_SHAPE, 0);
             if (current_score > best_score) {
@@ -225,6 +238,7 @@ public class EndDialog extends Dialog {
             }
         }
         if (context instanceof ImageMemory) {
+            title="Find Image";
             current_score = HighScore.getScore(ID.NORMAL_SCORE_FIND_IMAGE, 0);
             best_score = HighScore.getScore(ID.HIGH_SCORE_FIND_IMAGE, 0);
             if (current_score > best_score) {
@@ -245,8 +259,10 @@ public class EndDialog extends Dialog {
                 }.start();
             }
         }
-        mTvYourMove.setText("YOUR SCORE: " + current_score);
-        mTvYourBest.setText("BEST SCORE: " + best_score);
+        mTvYourMove.setText("Your Score: " + current_score);
+        mTvYourBest.setText("Best Score: " + best_score);
+        mTvTitle.setText(title);
+
     }
 
 
@@ -268,34 +284,5 @@ public class EndDialog extends Dialog {
         rootView.setDrawingCacheEnabled(true);
         return rootView.getDrawingCache();
     }
-
-//
-//    public static void store(Bitmap bm, String fileName){
-//        final String dir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
-//        File path = new File(dir);
-//        if(!path.exists())
-//            path.mkdirs();
-//        File file = new File(path, fileName);
-//        try {
-//            FileOutputStream fOut = new FileOutputStream(file);
-//            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
-//            fOut.flush();
-//            fOut.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void shareImage(File file){
-//        Uri uri = Uri.fromFile(file);
-//        Intent intent = new Intent();
-//        intent.setAction(Intent.ACTION_SEND);
-//        intent.setType("image/*");
-//
-//        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-//        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
-//        intent.putExtra(Intent.EXTRA_STREAM, uri);
-//        getOwnerActivity().startActivity(Intent.createChooser(intent, "Share Screenshot"));
-//    }
 }
 

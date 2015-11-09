@@ -89,9 +89,9 @@ public class FreakingMath extends AppCompatActivity {
             public void onClick(View v) {
                 mainView.setVisibility(View.VISIBLE);
                 fabtn.setVisibility(View.GONE);
-                info.setVisibility(View.GONE);
-                info1.setVisibility(View.GONE);
-                info2.setVisibility(View.GONE);
+//                info.setVisibility(View.GONE);
+//                info1.setVisibility(View.GONE);
+//                info2.setVisibility(View.GONE);
 
                 pr = (NumberProgressBar) findViewById(R.id.proTimer);
 
@@ -100,15 +100,15 @@ public class FreakingMath extends AppCompatActivity {
             }
         });
 
-        info = (TextView) findViewById(R.id.info);
-        info1 = (TextView) findViewById(R.id.info1);
-        info2 = (TextView) findViewById(R.id.info2);
-        info.setTypeface(fonts);
-        info1.setTypeface(fonts);
-        info2.setTypeface(fonts);
-
-        info1.setText(R.string.info_fm1);
-        info2.setText(R.string.info_fm2);
+//        info = (TextView) findViewById(R.id.info);
+//        info1 = (TextView) findViewById(R.id.info1);
+//        info2 = (TextView) findViewById(R.id.info2);
+//        info.setTypeface(fonts);
+//        info1.setTypeface(fonts);
+//        info2.setTypeface(fonts);
+//
+//        info1.setText(R.string.info_fm1);
+//        info2.setText(R.string.info_fm2);
     }
 
 

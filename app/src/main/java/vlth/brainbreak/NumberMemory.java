@@ -88,22 +88,22 @@ public class NumberMemory extends AppCompatActivity {
         });
 
         // Set info
-        info = (TextView) findViewById(R.id.info);
-        info1 = (TextView) findViewById(R.id.info1);
-        info2 = (TextView) findViewById(R.id.info2);
-        info.setTypeface(fonts);
-        info1.setTypeface(fonts);
-        info2.setTypeface(fonts);
-
-        info1.setText(R.string.info_fi1);
-        info2.setText(R.string.info_fi2);
+//        info = (TextView) findViewById(R.id.info);
+//        info1 = (TextView) findViewById(R.id.info1);
+//        info2 = (TextView) findViewById(R.id.info2);
+//        info.setTypeface(fonts);
+//        info1.setTypeface(fonts);
+//        info2.setTypeface(fonts);
+//
+//        info1.setText(R.string.info_fi1);
+//        info2.setText(R.string.info_fi2);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fab.setVisibility(View.GONE);
-                info.setVisibility(View.GONE);
-                info1.setVisibility(View.GONE);
-                info2.setVisibility(View.GONE);
+//                info.setVisibility(View.GONE);
+//                info1.setVisibility(View.GONE);
+//                info2.setVisibility(View.GONE);
                 mainView.setVisibility(View.VISIBLE);
                 setAllbtn(false);
             }
