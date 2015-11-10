@@ -22,7 +22,7 @@
             android:text="Game Over"
             android:layout_weight="0.2"
             android:textColor="#5D4037"
-            android:textSize="30sp"
+            android:textSize="34sp"
             android:gravity="center" />
         <View
             android:layout_width="match_parent"
@@ -40,17 +40,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Your Score: 69"
-                android:textSize="22dp"
+                android:text="Your Score: 0"
+                android:textSize="24dp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/yourBest"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="BEST SCORE: 69"
-                android:textColor="#d0ef0b0b"
-                android:textSize="22dp"
+                android:layout_marginTop="4dp"
+                android:text="BEST SCORE: 0"
+                android:textColor="#ffa000"
+                android:textSize="24dp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"

@@ -77,7 +77,7 @@ public class FreakingMath extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
+                startActivity(new Intent(FreakingMath.this, HomeActivity.class));
                 finish();
             }
         });
@@ -325,8 +325,11 @@ public class FreakingMath extends AppCompatActivity {
             finish();
             if (msg.what == 0)
                 startActivity(intent);
-            if (msg.what == 1)
+            if (msg.what == 1){
+                startActivity(new Intent(FreakingMath.this,HomeActivity.class));
                 finish();
+            }
+
         }
     };
 
@@ -335,7 +338,7 @@ public class FreakingMath extends AppCompatActivity {
         if (mytimer.timer != null) {
             mytimer.timer.cancel();
         }
-//        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
 
     }

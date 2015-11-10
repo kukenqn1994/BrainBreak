@@ -31,14 +31,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private final String applink = "https://fb.me/930419380326797";
     private final String image = "https://lh3.googleusercontent.com/ZZPdzvlpK9r_Df9C3M7j1rNRi7hhHRvPhlklJ3lfi5jk86Jd1s0Y5wcQ1QgbVaAP5Q=w300";
-    //Games infomation
-    private String[] titles = new String[]{"Higer or Lower",
-            "Mix Word", "Freaking Math", "Color or Shape", "Find Image", "Number"};
-    private int[] cover = new int[]{R.drawable.hl, R.drawable.wm, R.drawable.fm, R.drawable.geo, R.drawable.find, R.drawable.number};
-    private String[] tut = new String[]{"1", "2", "3", "4", "5", "6"};
 
-    ListView listView;
-    ArrayList<ItemGame> rowItems;
     private Toolbar toolbar;
     private Button invite;
     private LinearLayoutManager lLayout;
@@ -72,15 +65,6 @@ public class HomeActivity extends AppCompatActivity {
                 highScore.getScore(ID.HIGH_SCORE_NUMBER, 0)};
 
 
-//        rowItems = new ArrayList<>();
-//        for (int i = 0; i < titles.length; i++) {
-//            ItemGame item = new ItemGame(titles[i], best_score[i],tut[i], cover[i]);
-//            rowItems.add(item);
-//        }
-//        listView = (ListView) findViewById(R.id.list_game);
-//        ListGameAdapter adapter = new ListGameAdapter(this, R.layout.game_row, rowItems);
-//        listView.setAdapter(adapter);
-
         List<ItemGame> rowListItem = getAllItemList();
         lLayout = new LinearLayoutManager(HomeActivity.this);
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list_game);
@@ -94,26 +78,28 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(HomeActivity.this, HigherOrLower.class));
-
+                        finish();
                         break;
                     case 1:
                         startActivity(new Intent(HomeActivity.this, MirrorWord.class));
-
+                        finish();
                         break;
                     case 2:
                         startActivity(new Intent(HomeActivity.this, FreakingMath.class));
-
+                        finish();
                         break;
                     case 3:
                         startActivity(new Intent(HomeActivity.this, ColorShape.class));
-
+                        finish();
                         break;
                     case 4:
                         startActivity(new Intent(HomeActivity.this, ImageMemory.class));
+                        finish();
                         break;
                     case 5:
                         Log.d("tag", "f");
                         startActivity(new Intent(HomeActivity.this, NumberMemory.class));
+                        finish();
                         break;
                 }
             }

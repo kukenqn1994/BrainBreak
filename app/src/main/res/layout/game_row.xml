@@ -41,7 +41,7 @@
             android:layout_toRightOf="@+id/thumbnail"
             android:text="Title"
             android:textColor="#009688"
-            android:textSize="16dip"
+            android:textSize="22dip"
             android:textStyle="italic" />
 
         <!-- Artist Name -->

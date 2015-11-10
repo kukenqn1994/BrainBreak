@@ -255,8 +255,10 @@ public class ImageMemory extends AppCompatActivity {
             finish();
             if (msg.what == 0)
                 startActivity(intent);
-            if (msg.what == 1)
+            if (msg.what == 1){
+                startActivity(new Intent(ImageMemory.this,HomeActivity.class));
                 finish();
+            }
         }
     };
 
@@ -265,8 +267,8 @@ public class ImageMemory extends AppCompatActivity {
         if (timer.timer != null) {
             timer.timer.cancel();
         }
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
-//        startActivity(new Intent(this, HomeActivity.class));
     }
 
     @Override

@@ -244,36 +244,57 @@ cs1    <string name="app_name">Brain Breaks</string>
 
         <item>parents</item>
         <item>together</item>
-        <item>finger</item>
-        <item>shower</item>
-        <item>throat</item>
-        <item>fluent</item>
-        <item>letter</item>
-        <item>basket</item>
-        <item>blouse</item>
-        <item>bucket</item>
+        <item>stomach</item>
+        <item>waitress</item>
+        <item>website</item>
+        <item>wedding</item>
+        <item>village</item>
+        <item>usually</item>
+        <item>useless</item>
+        <item>tuesday</item>
 
-        <item>camera</item>
-        <item>cotton</item>
-        <item>flower</item>
-        <item>market</item>
-        <item>mirror</item>
-        <item>action</item>
-        <item>famous</item>
-        <item>louder</item>
-        <item>modern</item>
-        <item>soccer</item>
+        <item>seafood</item>
+        <item>sentence</item>
+        <item>separate</item>
+        <item>situation</item>
+        <item>software</item>
+        <item>solution</item>
+        <item>someday</item>
+        <item>someone</item>
+        <item>standard</item>
+        <item>strange</item>
 
-        <item>tennis</item>
-        <item>bridge</item>
-        <item>church</item>
-        <item>circle</item>
-        <item>flight</item>
-        <item>garden</item>
-        <item>island</item>
-        <item>middle</item>
-        <item>museum</item>
-        <item>office</item>
+        <item>straight</item>
+        <item>stretch</item>
+        <item>student</item>
+        <item>succeed</item>
+        <item>subtract</item>
+        <item>suggest</item>
+        <item>support</item>
+        <item>sweater</item>
+        <item>reserve</item>
+        <item>quality</item>
 
+        <item>question</item>
+        <item>quickly</item>
+        <item>package</item>
+        <item>perhaps</item>
+        <item>popular</item>
+        <item>position</item>
+        <item>pretend</item>
+        <item>progress</item>
+        <item>protect</item>
+        <item>province</item>
+
+        <item>problem</item>
+        <item>probably</item>
+        <item>practice</item>
+        <item>outside</item>
+        <item>original</item>
+        <item>opposite</item>
+        <item>november</item>
+        <item>notebook</item>
+        <item>neighbor</item>
+        <item>natural</item>
     </string-array>
 </resources>

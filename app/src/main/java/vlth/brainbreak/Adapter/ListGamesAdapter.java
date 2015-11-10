@@ -40,7 +40,8 @@ public class ListGamesAdapter extends RecyclerView.Adapter<ListGamesAdapter.Recy
     @Override
     public void onBindViewHolder(RecyclerViewHolders holder, int position) {
         Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/Comic.ttf");
-        holder.title.setTypeface(font,Typeface.BOLD);
+        Typeface font2 = Typeface.createFromAsset(context.getAssets(), "fonts/BradBun.ttf");
+        holder.title.setTypeface(font2);
         holder.best_score.setTypeface(font);
         holder.tut.setTypeface(font);
 

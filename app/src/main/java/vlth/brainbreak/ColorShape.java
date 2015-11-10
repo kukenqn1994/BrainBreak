@@ -113,7 +113,7 @@ public class ColorShape extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(ColorShape.this, HomeActivity.class));
+                startActivity(new Intent(ColorShape.this, HomeActivity.class));
                 finish();
             }
         });
@@ -271,8 +271,10 @@ public class ColorShape extends AppCompatActivity {
             finish();
             if (msg.what == 0)
                 startActivity(intent);
-            if (msg.what == 1)
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            if (msg.what == 1){
+                startActivity(new Intent(ColorShape.this,HomeActivity.class));
+                finish();
+            }
         }
     };
 
@@ -566,7 +568,7 @@ public class ColorShape extends AppCompatActivity {
         if (timer.timer != null) {
             timer.timer.cancel();
         }
-//        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
         finish();
     }
 

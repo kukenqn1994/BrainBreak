@@ -13,8 +13,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="progress_max">100</item>
         <item name="progress_current">0</item>
-        <item name="progress_unreached_color">#CCCCCC</item>
-        <item name="progress_reached_color">#db343c</item>
+        <item name="progress_unreached_color">#ece9e9</item>
+        <item name="progress_reached_color">#ffa000</item>
         <item name="progress_text_size">0sp</item>
         <item name="progress_text_color">#3498DB</item>
         <item name="progress_reached_bar_height">8.5dp</item>

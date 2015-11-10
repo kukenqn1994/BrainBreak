@@ -5,17 +5,31 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="rainbow_red">#bf0c43</color>
-    <color name="rainbow_yellow">#f9ba15</color>
-    <color name="rainbow_green">#8eac00</color>
-    <color name="rainbow_blue">#127a97</color>
-    <color name="rainbow_purple">#452b72</color>
 
-    <integer-array name="rainbow">
-        <item>@color/rainbow_red</item>
-        <item>@color/rainbow_yellow</item>
-        <item>@color/rainbow_green</item>
-        <item>@color/rainbow_blue</item>
-        <item>@color/rainbow_purple</item>
+    <color name="gold1">#020000</color>
+    <color name="gold2">#130304</color>
+    <color name="gold3">#240607</color>
+    <color name="gold4">#35080b</color>
+    <color name="gold5">#460b0e</color>
+    <color name="gold6">#570e11</color>
+    <color name="gold7">#791318</color>
+    <color name="gold8">#8a151b</color>
+    <color name="gold9">#9b181f</color>
+    <color name="gold10">#ac1b22</color>
+    <color name="gold11">#ccac00</color>
+    <color name="gold12">#b39700</color>
+    <integer-array name="golden">
+        <item>@color/gold1</item>
+        <item>@color/gold2</item>
+        <item>@color/gold3</item>
+        <item>@color/gold4</item>
+        <item>@color/gold5</item>
+        <item>@color/gold6</item>
+        <item>@color/gold7</item>
+        <item>@color/gold8</item>
+        <item>@color/gold9</item>
+        <item>@color/gold10</item>
+        <item>@color/gold11</item>
+        <item>@color/gold12</item>
     </integer-array>
 </resources>

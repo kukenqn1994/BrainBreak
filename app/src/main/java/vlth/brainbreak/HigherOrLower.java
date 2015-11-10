@@ -66,12 +66,12 @@ public class HigherOrLower extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(HigherOrLower.this, HomeActivity.class));
+                startActivity(new Intent(HigherOrLower.this, HomeActivity.class));
                 finish();
             }
         });
 
-        myTimer = new MyTimer(1500);
+        myTimer = new MyTimer(1200);
         myTimer.setID(progressBar);
         myTimer.setOnTickHtmlListener(gameLose);
 
@@ -264,8 +264,10 @@ public class HigherOrLower extends AppCompatActivity {
             finish();
             if (msg.what == 0)
                 startActivity(intent);
-            if (msg.what == 1)
+            if (msg.what == 1){
+                startActivity(new Intent(HigherOrLower.this,HomeActivity.class));
                 finish();
+            }
         }
     };
 
@@ -275,7 +277,7 @@ public class HigherOrLower extends AppCompatActivity {
             myTimer.timer.cancel();
         }
         finish();
-//        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
 

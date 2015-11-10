@@ -99,7 +99,7 @@ public class MirrorWord extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(MirrorWord.this, HomeActivity.class));
+                startActivity(new Intent(MirrorWord.this, HomeActivity.class));
                 finish();
             }
         });
@@ -239,8 +239,10 @@ public class MirrorWord extends AppCompatActivity {
             finish();
             if (msg.what == 0)
                 startActivity(intent);
-            if (msg.what == 1)
+            if (msg.what == 1){
+                startActivity(new Intent(MirrorWord.this,HomeActivity.class));
                 finish();
+            }
         }
     };
 

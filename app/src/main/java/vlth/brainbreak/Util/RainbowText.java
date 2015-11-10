@@ -76,7 +76,7 @@ public class RainbowText {
         private float translateXPercentage = 0;
 
         public AnimatedColorSpan(Context context) {
-            colors = context.getResources().getIntArray(R.array.rainbow);
+            colors = context.getResources().getIntArray(R.array.golden);
         }
 
         public void setTranslateXPercentage(float percentage) {

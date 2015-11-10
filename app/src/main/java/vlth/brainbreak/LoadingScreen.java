@@ -21,7 +21,7 @@ public class LoadingScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_screen);
 
-        timer =new CountDownTimer(700,100) {
+        timer =new CountDownTimer(400,300) {
             @Override
             public void onTick(long millisUntilFinished) {
             }
@@ -36,12 +36,12 @@ public class LoadingScreen extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            timer.onFinish();
-            if (timer != null) {
-                timer.cancel();
-            }
-        }
-        return true;
+//        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//            timer.onFinish();
+//            if (timer != null) {
+//                timer.cancel();
+//            }
+//        }
+        return false;
     }
 }
