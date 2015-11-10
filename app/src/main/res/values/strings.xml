@@ -29,18 +29,18 @@ cs1    <string name="app_name">Brain Breaks</string>
     <string name="title_activity_image_memory">ImageMemory</string>
     <string name="title_activity_loading_screen">LoadingScreen</string>
 
-    <string name="info_fm1"> - Answer the question in only 1.5 second.</string>
-    <string name="info_fm2"> - Reach the highest score and share with your friends.</string>
+    <string name="info_fm1">   Answer the question in only 1.5 second.</string>
+    <string name="info_fm2">   Reach the highest score and share with your friends.</string>
 
-    <string name="info_hl1"> - Hit the up/down arrow if you saw the next number is higher or lower than the previous.</string>
-    <string name="info_hl2"> - Reach the highest score and share with your friends.</string>
+    <string name="info_hl1">   Hit the up/down arrow if you saw the next number is higher or lower than the previous.</string>
+    <string name="info_hl2">   Reach the highest score and share with your friends.</string>
 
-    <string name="info_mw1"> - We give you word, and you will find the answer that have character math with the word we give you.</string>
+    <string name="info_mw1">   We give you word, and you will find the answer that have character math with the word we give you.</string>
     <string name="info_mw2"> - Reach the highest score and share with your friends.</string>
 
-    <string name="info_cs1"> - Follow the word we give you: color or shape, to choose the right picture.</string>
+    <string name="info_cs1">   Follow the word we give you: color or shape, to choose the right picture.</string>
     <string name="info_cs2"> - Reach the highest score and share with your friends.</string>
-    <string name="info_fi1"> - Read the request and tap the true image.</string>
+    <string name="info_fi1">   Read the request and tap the true image.</string>
     <string name="info_fi2"> - Reach the highest score and share with your friends.</string>
     <string-array name="words_lv1">
         <item>also</item>

@@ -126,10 +126,10 @@ public class HomeActivity extends AppCompatActivity {
         List<ItemGame> allItems = new ArrayList<ItemGame>();
         allItems.add(new ItemGame("Higher or Lower", best_score[0], R.string.info_hl1, R.drawable.hl));
         allItems.add(new ItemGame("Mirror Words", best_score[1], R.string.info_mw1, R.drawable.wm));
-        allItems.add(new ItemGame("Freaking Math", best_score[2], R.string.info_fm1, R.drawable.fm));
+        allItems.add(new ItemGame("Quick Math", best_score[2], R.string.info_fm1, R.drawable.fm));
         allItems.add(new ItemGame("Color and Shape", best_score[3], R.string.info_cs1, R.drawable.geo));
         allItems.add(new ItemGame("Find Image", best_score[4], R.string.info_fi1, R.drawable.find));
-        allItems.add(new ItemGame("Number ", best_score[5], R.string.info_hl1, R.drawable.number));
+        allItems.add(new ItemGame("Number Memory", best_score[5], R.string.info_hl1, R.drawable.number));
         return allItems;
     }
 

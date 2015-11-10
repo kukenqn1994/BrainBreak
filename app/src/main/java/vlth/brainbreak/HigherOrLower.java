@@ -25,7 +25,6 @@ public class HigherOrLower extends AppCompatActivity {
 
     private ImageButton btH;
     private ImageButton btL;
-    private TextView info, info1, info2;
     private TextView num, score;
     private int firstNum, lastNum, ranNum = -1, temp = -1, myScore = 0;
     private NumberProgressBar progressBar;
