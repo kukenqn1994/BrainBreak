@@ -42,5 +42,7 @@
 
     <string name="info_cs1">   Dựa vào từ khóa: Hình - Màu để chọn hình đúng cho từ khóa phía sau.</string>
     <string name="info_cs2">   Đạt điểm thật cao và thi tài với bạn bè.</string>
+
+    <string name="info_fi1">   Dựa vào thứ tự cần tìm. Chọn hình đúng với thứ tự của hình trong dãy trước đó.</string>
 </resources>
 
