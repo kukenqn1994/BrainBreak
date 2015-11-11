@@ -140,7 +140,6 @@ public class EndDialog extends Dialog {
                 mTvYourMove.setText("New High Score: " + current_score);
                 mTvYourMove.setTextSize(28);
                 rainbowText.startAnimation(mTvYourMove.getText().toString());
-
             }
         }
         if (context instanceof MirrorWord) {

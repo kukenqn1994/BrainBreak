@@ -11,22 +11,26 @@
         android:icon="@drawable/ic_launcher_test"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
-        <activity android:name=".MirrorWord"
-            android:screenOrientation="portrait">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MirrorWord"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".HigherOrLower"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".HigherOrLower"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".FreakingMath"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".FreakingMath"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".ColorShape"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ColorShape"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name=".HomeActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -57,11 +61,17 @@
         </activity>
         <activity
             android:name=".LoadingScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".NumberMemory"
+            android:label="@string/title_activity_number_memory"
+            android:theme="@style/AppTheme" >
         </activity>
     </application>
 
